@@ -1,0 +1,31 @@
+@import '../../../../assets/styles/variables.scss';
+
+.button {
+
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 2.5rem;
+  text-align: center;
+  border: none;
+  color: map-get($color-neutral, 500);
+
+  &_primary {
+    background-color: map-get($color-primary, 700);
+  }
+
+  &_danger {
+    background-color: map-get($color-danger, 500);
+  }
+
+  &_disabled {
+    background-color: map-get($color-neutral, 600);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: 0 0 .2rem 0 map-get($color-neutral, 500) inset,
+  }
+}

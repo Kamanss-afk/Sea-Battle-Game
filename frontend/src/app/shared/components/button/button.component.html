@@ -1,0 +1,10 @@
+<button
+  [disabled]="disabled"
+  [ngClass]="{
+    button: true,
+    button_primary: type == 'primary',
+    button_danger: type == 'danger',
+    button_disabled: disabled
+  }">
+  <ng-content></ng-content>
+</button>

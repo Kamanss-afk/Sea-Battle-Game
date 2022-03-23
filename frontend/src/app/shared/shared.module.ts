@@ -2,7 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { ButtonComponent } from './components/button/button.component';
+
 @NgModule({
+  declarations: [
+    ButtonComponent,
+  ],
   imports: [
     CommonModule, 
     RouterModule,
@@ -10,7 +15,7 @@ import { RouterModule } from '@angular/router';
   exports: [
     CommonModule,
     RouterModule,
+    ButtonComponent,
   ],
-  declarations: [],
 })
 export class SharedModule {}
