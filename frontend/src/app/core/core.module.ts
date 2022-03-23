@@ -1,10 +1,16 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
+import { LayoutComponent } from './components/layout/layout.component';
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    LayoutComponent,
+  ],
   imports: [],
+  exports: [
+    LayoutComponent,
+  ],
   providers: [],
-  bootstrap: [],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

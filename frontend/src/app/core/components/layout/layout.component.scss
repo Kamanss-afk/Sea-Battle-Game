@@ -1,0 +1,14 @@
+@import 'variables';
+
+.layout {
+
+  &__content {
+    min-height: 100vh;
+    background:
+      linear-gradient($background-gradient),
+      url("../../../../assets/img/left-background-ship.svg") left/30% no-repeat,
+      url("../../../../assets/img/central-background-ship.svg") center/25% no-repeat,
+      url("../../../../assets/img/right-background-ship.svg") right/30% no-repeat;
+  }
+
+}
