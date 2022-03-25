@@ -1,22 +1,15 @@
 @import '../../../../assets/styles/variables.scss';
 
 .toggle {
+  display: flex;
 
   max-width: 100%;
-  min-width: 100px;
+  min-width: 220px;
   width: inherit;
 
   max-height: 100px;
   min-height: 50px;
   height: inherit;
-
-  &__content {
-    display: flex;
-    height: inherit;
-    min-height: inherit;
-    width: inherit;
-    min-width: inherit;
-  }
 
   &__input {
     display: none;
