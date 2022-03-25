@@ -1,1 +1,7 @@
-<input class="input" [placeholder]="placeholder"/>
+<input 
+  class="input"
+  (input)="onInputValueChange($event)"
+  [value]="value"
+  [disabled]="disabled"
+  [placeholder]="placeholder"
+/>
