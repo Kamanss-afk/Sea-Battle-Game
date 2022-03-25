@@ -1,8 +1,8 @@
 @import '../../../../assets/styles/variables.scss';
 
 .button {
-
-  width: 100%;
+  width: inherit;
+  height: inherit;
   padding: 0.8rem;
   border-radius: 2rem;
   text-align: center;
