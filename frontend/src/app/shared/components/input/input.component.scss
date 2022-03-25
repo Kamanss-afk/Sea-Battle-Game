@@ -1,7 +1,11 @@
 @import '../../../../assets/styles/variables.scss';
 
 .input {
-  width: 100%;
+  min-width: 100px;
+  width: inherit;
+  min-height: 50px;
+  height: inherit;
+  display: block;
   border: none;
   outline: none;
   padding: 0.8rem;
