@@ -5,6 +5,14 @@
   font-family: RussoOne;
 }
 
+::ng-deep html {
+  height: 100%;
+}
+
+::ng-deep body {
+  height: 100%;
+}
+
 @font-face {
   font-family: RussoOne;
   src: url(../assets/styles/fonts/RussoOne-Regular.ttf);
