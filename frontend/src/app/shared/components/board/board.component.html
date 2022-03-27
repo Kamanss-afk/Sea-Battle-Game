@@ -1,0 +1,20 @@
+<div class="board" #boardElement>
+  <div class="board__row" *ngFor="let row of board; let i = index">
+    <div *ngFor="let square of row; let j = index">  
+      <div
+        #squareElement
+        [ngClass]="{
+          'board__square': true,
+          'board__square_drop': square.isDropZone,
+          'board__square_forbidden': square.isForbidden,
+          'board__square_ship': square.isShip,
+          'board__square_miss': square.isMiss,
+          'board__square_hit': square.isHit
+        }"
+        (mouseover)="squareHover(square, squareElement.getBoundingClientRect())"
+        (mouseout)="squareLeave(square)"
+        (click)="squareClick(square)">
+      </div>
+    </div>
+  </div>
+</div>
