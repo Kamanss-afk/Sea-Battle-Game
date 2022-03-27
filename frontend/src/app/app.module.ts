@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BattleComponent } from './pages/battle/battle.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DeployComponent } from './pages/deploy/deploy.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -14,6 +15,8 @@ import { DeployComponent } from './pages/deploy/deploy.component';
     AppRoutingModule,
     CoreModule,
     SharedModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,

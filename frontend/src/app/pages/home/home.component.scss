@@ -1,0 +1,31 @@
+.home {
+
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__form {
+    width: 30%;
+    min-width: 280px;
+    display: grid;
+    gap: 1rem;
+  }
+
+  app-toggle {
+    width: 100%;
+    height: 6rem;
+  }
+
+  app-input {
+    width: 100%;
+    height: 4rem;
+  }
+
+  app-button {
+    width: 100%;
+    height: 4rem;
+  }
+  
+}
