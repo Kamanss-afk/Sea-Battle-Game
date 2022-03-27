@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector: 'app-toggle',
@@ -6,5 +6,10 @@ import { Component } from "@angular/core";
   styleUrls: ['toggle.component.scss'],
 })
 export class ToggleComponent {
-  
+  @Input() controllers: [string, string] = ['On', 'Off'];
+
+  @Output() onSwitch = new EventEmitter<MouseEvent>();
+  switch(event: MouseEvent){
+    this.onSwitch.emit(event);
+  }
 }

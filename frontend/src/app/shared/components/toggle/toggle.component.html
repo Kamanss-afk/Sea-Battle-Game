@@ -1,10 +1,10 @@
 <div class="toggle">
-  <input class="toggle__input" type="checkbox" id="input">
+  <input class="toggle__input" type="checkbox" id="input" (change)="switch($event)">
   <label class="toggle__label" for="input">
     <div class="toggle__switch"></div>
-    <div class="toggle__controls">
-      <p class="toggle__controller">JOIN GAME</p>
-      <p class="toggle__controller">CRATE GAME</p>
+    <div class="toggle__controllers">
+      <p class="toggle__controller">{{ controllers[0] }}</p>
+      <p class="toggle__controller">{{ controllers[1] }}</p>
     </div>
   </label>
 </div>
