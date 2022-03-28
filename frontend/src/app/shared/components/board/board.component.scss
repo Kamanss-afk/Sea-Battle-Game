@@ -1,12 +1,14 @@
 @import '../../../../assets/styles/variables.scss';
 
 .board {
+  padding: 2rem;
 
   &__row {
     display: flex;
   }
   
   &__square {
+    position: relative;
     width: 3rem;
     height: 3rem;
     box-shadow: 0px 0px 0px 1px map-get($color-neutral, 600) inset;
@@ -34,6 +36,25 @@
       background: 
         map-get($color-neutral, 500)
         url('../../../../assets/img/hit.svg') center/90% no-repeat;
+    }
+  }
+
+  &__squre-marker {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: map-get($color-primary, 800);
+    font-size: 1.3rem;
+
+    &_top {
+      top: -2rem;
+      text-align: center;
+    }
+
+    &_left {
+      left: -2rem;
+      text-align: left;
+      line-height: 3rem;
     }
   }
 

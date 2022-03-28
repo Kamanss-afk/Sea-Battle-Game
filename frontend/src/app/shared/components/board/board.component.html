@@ -14,6 +14,12 @@
         (mouseover)="squareHover(square, squareElement.getBoundingClientRect())"
         (mouseout)="squareLeave(square)"
         (click)="squareClick(square)">
+          <ng-container *ngIf="i == 0">
+            <div class="board__squre-marker board__squre-marker_top">{{ letters[j] }}</div>
+          </ng-container>
+          <ng-container *ngIf="j == 0">
+            <div class="board__squre-marker board__squre-marker_left">{{ numbers[i] }}</div>
+          </ng-container>
       </div>
     </div>
   </div>
