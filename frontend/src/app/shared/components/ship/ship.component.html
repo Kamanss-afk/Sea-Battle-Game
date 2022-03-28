@@ -1,0 +1,8 @@
+<div class="ship">
+  <div class="ship__content" [class.ship_rotate]="rotate">
+    <div class="ship__square" *ngFor="let i of [0, 1, 2, 3].slice(0, size)"></div>
+    <div class="ship__mover">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

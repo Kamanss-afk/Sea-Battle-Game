@@ -1,0 +1,36 @@
+@import '../../../../assets/styles/variables.scss';
+
+.ship {
+  
+  &__content {
+    display: flex;
+    position: relative;
+    width: fit-content;
+  }
+
+  &__square {
+    width: 3rem;
+    height: 3rem;
+    background-color: map-get($color-neutral, 500);
+    box-shadow: 0px 0px 0px 1px map-get($color-neutral, 600) inset;
+  };
+
+  &__mover {
+    position: absolute;	
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+    margin: auto;
+    height: 50%;
+    width: 50%;
+    cursor: move; 
+    mask: url('../../../../assets/img/move.svg') center no-repeat;
+    background-color: map-get($color-primary, 700);
+  }
+
+  &_rotate {
+    flex-direction: column;
+  }
+  
+};
