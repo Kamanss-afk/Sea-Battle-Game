@@ -1,0 +1,23 @@
+<div class="fleet">
+  <div class="fleet__text">Флот (доступно {{ fleet.length }} кораблей):</div>
+  <div class="fleet__spawn">
+
+    <div class="fleet__spawn-place">
+      <ng-container *ngIf="fleet.length > 0">
+        <app-ship 
+          id="fleet[0].id"
+          [size]="fleet[0].size"
+          [rotate]="fleet[0].rotate"
+
+          cdkDrag
+          (cdkDragStarted)="dragStarted($event, fleet[0])"
+          (cdkDragEnded)="dragEnded($event)">
+          <div cdkDragHandle></div>
+        </app-ship>
+      </ng-container>
+    </div>
+
+    <div class="fleet__spawn-button"></div>
+
+  </div>
+</div>
