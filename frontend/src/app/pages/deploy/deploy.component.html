@@ -1,1 +1,10 @@
-<div>Deploy Page</div>
+<div class="deploy">
+  <div class="deploy__platform">
+    <app-fleet class="deploy__platform-fleet" [fleet]="fleet"></app-fleet>
+    <app-board class="deploy__platform-board" [board]="board"></app-board>
+    <div class="deploy__platform-buttons">
+      <app-button [type]="'danger'">ПОКИНУТЬ БОЙ</app-button>
+      <app-button [type]="'primary'">ГОТОВ К БОЮ</app-button>
+    </div>
+  </div>
+</div>
