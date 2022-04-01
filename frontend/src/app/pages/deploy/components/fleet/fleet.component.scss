@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/variables.scss';
+@import '../../../../../assets/styles/variables.scss';
 
 .fleet {
   
@@ -50,7 +50,7 @@
       margin: auto;
       height: 80%;
       width: 80%;
-      mask: url('../../../../assets/img/rotate.svg') center no-repeat;
+      mask: url('../../../../../assets/img/rotate.svg') center no-repeat;
       background-color: map-get($color-neutral, 500);
     }
 

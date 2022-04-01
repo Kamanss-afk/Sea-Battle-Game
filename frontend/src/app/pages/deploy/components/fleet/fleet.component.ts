@@ -1,6 +1,6 @@
 import { CdkDragEnd, CdkDragStart } from "@angular/cdk/drag-drop";
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Ship } from "../../models/ship.model";
+import { Ship } from "../../../../shared/models/ship.model";
 
 @Component({
   selector: 'app-fleet',
