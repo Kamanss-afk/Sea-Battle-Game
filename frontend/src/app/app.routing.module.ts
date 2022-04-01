@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BattleComponent } from './pages/battle/battle.component';
-import { DeployComponent } from './pages/deploy/deploy.component';
-import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'deploy', component: DeployComponent },
-  { path: 'battle', component: BattleComponent },
+  { 
+    path: '',
+    loadChildren: () => import('./pages/home/home.module').then(module => module.HomeModule)
+  },
+  { 
+    path: 'deploy', 
+    loadChildren: () => import('./pages/deploy/deploy.module').then(module => module.DeployModule) 
+  },
+  { 
+    path: 'battle', 
+    loadChildren: () => import('./pages/battle/battle.module').then(module => module.BattleModule) 
+  },
 ];
 
 @NgModule({

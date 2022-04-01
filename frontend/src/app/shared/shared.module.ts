@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent } from './components/button/button.component';
 import { InputComponent } from './components/input/input.component';
@@ -22,11 +22,14 @@ import { FleetComponent } from './components/fleet/fleet.component';
   imports: [
     CommonModule, 
     RouterModule,
-    DragDropModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
     ButtonComponent,
     InputComponent,
     ToggleComponent,
