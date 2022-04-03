@@ -1,6 +1,6 @@
-import { CdkDragEnd, CdkDragStart } from "@angular/cdk/drag-drop";
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Ship } from "../../../../shared/models/ship.model";
+import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Ship } from '../../../../shared/models/ship.model';
 
 @Component({
   selector: 'app-fleet',
@@ -18,5 +18,10 @@ export class FleetComponent {
   @Output() onDragEnded = new EventEmitter<CdkDragEnd>()
   dragEnded(event: CdkDragEnd) {
     this.onDragEnded.emit(event);
+  }
+
+  @Output() onRotate = new EventEmitter<number>()
+  rotate(shipId: number) {
+    this.onRotate.emit(shipId);
   }
 }

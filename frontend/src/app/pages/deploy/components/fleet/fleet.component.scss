@@ -38,6 +38,7 @@
     background-color: map-get($color-primary, 700);
     border-radius: inherit;
     position: relative;
+    border: none;
     box-shadow: $outside-shadow;
 
     &::before {
@@ -71,6 +72,6 @@
   }
 
   app-ship {
-    position: absolute;
+    z-index: 100;
   }
 }
