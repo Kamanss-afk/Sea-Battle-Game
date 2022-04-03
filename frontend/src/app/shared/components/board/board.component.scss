@@ -1,7 +1,6 @@
 @import '../../../../assets/styles/variables.scss';
 
 .board {
-  padding: 2rem 0 0 2rem;
 
   &__row {
     display: flex;
@@ -15,11 +14,11 @@
     background-color: map-get($color-primary, 600);
 
     &_drop {
-      background-color: map-get($color-success, 500);
+      background-color: map-get($color-success, 400);
     }
     
     &_forbidden {
-      background-color: map-get($color-danger, 500);
+      background-color: map-get($color-danger, 400);
     }
     
     &_ship {

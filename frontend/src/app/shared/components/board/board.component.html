@@ -1,4 +1,4 @@
-<div class="board" #boardElement>
+<div class="board">
   <div class="board__row" *ngFor="let row of board; let i = index">
     <div *ngFor="let square of row; let j = index">  
       <div
@@ -11,7 +11,7 @@
           'board__square_miss': square.isMiss,
           'board__square_hit': square.isHit
         }"
-        (mouseover)="squareHover(square, squareElement.getBoundingClientRect())"
+        (mouseover)="squareHover(square)"
         (mouseout)="squareLeave(square)"
         (click)="squareClick(square)">
           <ng-container *ngIf="i == 0">

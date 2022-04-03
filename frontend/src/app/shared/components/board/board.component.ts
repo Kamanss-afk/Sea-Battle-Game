@@ -1,12 +1,10 @@
 import { 
   Component,
-  ElementRef,
   EventEmitter,
   Input,
   Output,
-  ViewChild,
-} from "@angular/core";
-import { Square, SquarePosition } from "../../models/square.model";
+} from '@angular/core';
+import { Square } from '../../models/square.model';
 
 @Component({
   selector: 'app-board',
@@ -19,9 +17,6 @@ export class BoardComponent {
   public numbers: Array<string> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
   public letters: Array<string> = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'К'];
 
-  @ViewChild('boardElement', {static: false}) 
-  boardElement: ElementRef | undefined;
-
   @Output() onSquareClick = new EventEmitter<Square>()
   squareClick(square: Square) {
     this.onSquareClick.emit(square);
@@ -32,20 +27,9 @@ export class BoardComponent {
     this.onSquareLeave.emit(square);
   }
 
-  @Output() onSquareHover = new EventEmitter<{ square: Square, position: SquarePosition }>()
-  squareHover(square: Square, squareElement: any) {
-    const position = this.getSquarePosition(squareElement);
-    this.onSquareHover.emit({ square, position });
+  @Output() onSquareHover = new EventEmitter<Square>()
+  squareHover(square: Square) {
+    this.onSquareHover.emit(square);
   }
 
-  private getSquarePosition(squareElement: any): SquarePosition {
-    return {
-      left:
-        squareElement.left - 
-        this.boardElement?.nativeElement.getBoundingClientRect().left,
-      top:
-        squareElement.top - 
-        this.boardElement?.nativeElement.getBoundingClientRect().top,
-    };
-  }
 }
