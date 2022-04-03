@@ -6,6 +6,7 @@ import { DeployComponent } from './deploy.component';
 import { FleetComponent } from './components/fleet/fleet.component';
 import { ShipComponent } from './components/ship/ship.component';
 import { FleetMapComponent } from './components/fleet-map/fleet-map.component';
+import { DeployService } from './services/deploy.service';
 
 @NgModule({
   declarations: [
@@ -24,5 +25,8 @@ import { FleetMapComponent } from './components/fleet-map/fleet-map.component';
   exports: [
 
   ],
+  providers: [
+    DeployService,
+  ]
 })
 export class DeployModule {}

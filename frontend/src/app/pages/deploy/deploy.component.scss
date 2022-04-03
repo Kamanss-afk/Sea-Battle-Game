@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    padding: 2rem;
+    padding: 2rem 2rem 2rem 4rem;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 30%, rgba(255, 255, 255, 0) 90%);
     border-radius: map-get($border-radius, middle);
   }
@@ -23,8 +23,9 @@
     width: 100%;
   }
 
-  &__platform-board {
+  &__platform-map {
     width: 100%;
+    box-shadow: $outside-shadow;
   }
 
   &__platform-buttons {

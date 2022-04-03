@@ -12,6 +12,32 @@ export class Player {
     this.deployedShips = [];
   }
 
+  public rotateShip(shipId: number) {
+    const ship = this.fleet.find((ship: Ship) => ship.id == shipId);
+
+    if(ship) {
+      ship.rotate = !ship.rotate;
+    }
+  }
+
+  public deployShip(ship: Ship) {
+    const index = this.fleet.findIndex((source: Ship) => source.id == ship.id);4
+    this.deployedShips.push(ship);
+    this.fleet.splice(index, 1);
+  }
+
+  public removeShip(ship: Ship) {
+    const index = this.deployedShips.findIndex((source: Ship) => source.id == ship.id);
+    this.deployedShips.splice(index, 1);
+    this.fleet.unshift(ship);
+  }
+
+  public moveShip(ship: Ship) {
+    let index = this.deployedShips.findIndex((source: Ship) => source.id == ship.id);
+    this.deployedShips.splice(index, 1);
+    this.deployedShips.push(ship);
+  }
+
   private createFleet(): Array<Ship> {
     return [
       new Ship(1, 4),

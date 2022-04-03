@@ -1,10 +1,30 @@
 <div class="deploy">
   <div class="deploy__platform">
-    <app-fleet class="deploy__platform-fleet" [fleet]="fleet"></app-fleet>
-    <app-board class="deploy__platform-board" [board]="board"></app-board>
+
+    <app-fleet
+      class="deploy__platform-fleet"
+      [fleet]="gameService.player.fleet"
+      (onRotate)="deployService.shipRotate($event)"
+      (onDragStarted)="deployService.dragStarted($event)"
+      (onDragEnded)="deployService.dragEnded($event)">
+    </app-fleet>
+
+    <fleet-map 
+      class="deploy__platform-map"
+      [deployedShips]="gameService.player.deployedShips"
+      (onDragStarted)="deployService.dragStarted($event)"
+      (onDragEnded)="deployService.dragEnded($event)">
+      <app-board 
+        [board]="gameService.player.board.grid"
+        (onSquareHover)="deployService.squareHover($event)"
+        (onSquareLeave)="deployService.squareLeave($event)">
+      </app-board>
+    </fleet-map>
+
     <div class="deploy__platform-buttons">
       <app-button [type]="'danger'">ПОКИНУТЬ БОЙ</app-button>
       <app-button [type]="'primary'">ГОТОВ К БОЮ</app-button>
     </div>
+    
   </div>
 </div>
