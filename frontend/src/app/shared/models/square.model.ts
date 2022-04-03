@@ -1,8 +1,3 @@
-export interface SquarePosition {
-  top: number;
-  left: number;
-}
-
 export interface SquareCoords {
   x: number;
   y: number;
