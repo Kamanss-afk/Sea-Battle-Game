@@ -6,6 +6,7 @@
     display: flex;
     position: relative;
     width: fit-content;
+    box-shadow: $outside-shadow;
   }
 
   &__square {
