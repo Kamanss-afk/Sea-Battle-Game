@@ -1,0 +1,20 @@
+<div class="fleet-map" cdkDropList>
+  <div *ngFor="let ship of deployedShips; let i = index">
+    <app-ship
+      id="ship.id"
+      [size]="ship.size"
+      [rotate]="ship.rotate"
+
+      cdkDrag
+      (cdkDragStarted)="dragStarted($event, ship)"
+      (cdkDragEnded)="dragEnded($event)"
+      
+      [style.top.rem]="ship.position.top" 
+      [style.left.rem]="ship.position.left">
+        <div cdkDragHandle></div>
+        <div *cdkDragPlaceholder></div>
+    </app-ship>
+
+  </div>
+  <ng-content></ng-content>
+</div>
