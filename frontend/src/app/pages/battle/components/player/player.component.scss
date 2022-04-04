@@ -1,0 +1,27 @@
+@import '../../../../../assets/styles/variables.scss';
+
+.player {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5rem;
+    height: 100%;
+    background-color: map-get($color-primary, 800);
+  }
+
+  &__score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    padding: 1rem;
+    background-color: map-get($color-neutral, 500);
+  }
+
+}
