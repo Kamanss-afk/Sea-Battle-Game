@@ -41,10 +41,7 @@
     align-items: center;
     font-size: 3rem;
     color: map-get($color-primary, 800);
-    animation: pulsate 4s linear infinite;
+    animation: blink 3s infinite;
   }
 
-  @keyframes pulsate {  
-    50% { opacity: .3; }
-  }
 }
