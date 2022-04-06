@@ -1,0 +1,32 @@
+@import '../../../../../assets/styles/variables.scss';
+
+.message {
+  width: 80%;
+
+  &__content {
+    width: 100%;
+    padding: 3rem;
+    font-size: 1.5rem;
+    background-color: rgba(#ffff, 0.7);
+    color: map-get($color-primary, 800);
+    border-radius: map-get($border-radius, middle);
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: map-get($color-danger, 500);
+  }
+
+  &__body {
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  &__footer {
+    font-size: 2.5rem;
+    animation: blink 3s infinite;
+    text-align: center;
+  }
+  
+}

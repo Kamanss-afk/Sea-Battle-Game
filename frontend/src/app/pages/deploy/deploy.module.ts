@@ -7,6 +7,7 @@ import { FleetComponent } from './components/fleet/fleet.component';
 import { ShipComponent } from './components/ship/ship.component';
 import { FleetMapComponent } from './components/fleet-map/fleet-map.component';
 import { DeployService } from './services/deploy.service';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { DeployService } from './services/deploy.service';
     FleetComponent,
     ShipComponent,
     FleetMapComponent,
+    MessageComponent,
   ],
   imports: [
     DragDropModule,
