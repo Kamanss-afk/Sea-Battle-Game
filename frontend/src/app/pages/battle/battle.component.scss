@@ -18,27 +18,33 @@
   &__info {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     width: 100%;
-    height: 10vh;
+    height: 6rem;
     background-color: map-get($color-primary, 600);
-    margin: 2.5rem 0 5rem 0;
+    margin: 2rem 0 4rem 0;
+    padding: 0.5rem;
   }
 
   &__info-player {
-    
-  }
-
-  &__info-opponent {
-
-  }
-
-  &__infor-timer {
-    
+    height: 100%;
   }
 
   &__platform {
     width: 100%;
     display: flex;
     justify-content: space-around;
+  }
+
+  &__platform-message {
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    color: map-get($color-primary, 800);
+    animation: pulsate 4s linear infinite;
+  }
+
+  @keyframes pulsate {  
+    50% { opacity: .3; }
   }
 }

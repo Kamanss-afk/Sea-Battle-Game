@@ -4,14 +4,15 @@
     <app-button [type]="'danger'">ВЫЙТИ ИЗ ИГРЫ</app-button>
   </div>
   <div class="battle__info">
-    <app-player 
+    <app-player
       class="battle__info-player"
-      [name]="'Игрок1'"
+      [leftSide]="true"
+      [name]="'Игрок2'"
       [score]="20">
     </app-player>
-    <div class="battle__infor-timer"></div>
+    <app-timer class="battle__info-timer"></app-timer>
     <app-player 
-      class="battle__info-opponent"
+      class="battle__info-player"
       [name]="'Игрок2'"
       [score]="20">
     </app-player>
