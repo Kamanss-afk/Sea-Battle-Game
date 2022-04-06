@@ -7,7 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class PlayerComponent {
   @Input() name: string = '';
-  @Input() score: number = 20; 
+  @Input() score: number = 20;
+  @Input() leftSide: boolean = false;
 
   constructor() {}
 }

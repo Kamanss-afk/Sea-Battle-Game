@@ -1,6 +1,6 @@
-<div class="player">
+<div class="player" [class.player_left-side]="leftSide">
   <div class="player__score">
-    Осталось: <span>{{ score }}</span>
+    Осталось <br> {{ score }}
   </div>
   <div class="player__name">{{ name }}</div>
 </div>
