@@ -1,0 +1,9 @@
+<div class="timer">
+  <div class="timer__wheel"></div>
+  <countdown
+    #timer
+    class="timer__clock" 
+    [config]="config"
+    (event)="handleEvent($event)">
+  </countdown>
+</div>
