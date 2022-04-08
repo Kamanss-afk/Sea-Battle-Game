@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Ship } from '../../../shared/models/ship.model';
 import { GameService } from '../../../core/services/game.service';
 import { Player } from '../../../shared/models/player.model';
-import { Square, SquareCoords } from '../../../shared/models/square.model';
+import { Square } from '../../../shared/models/square.model';
 import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
 
 @Injectable()
@@ -51,13 +51,13 @@ export class DeployService {
     if(this.draggedShip) {
 
       if(this.dropZone.length && this.draggedShip.deployed) {
-        let ship = this.updateShip(this.draggedShip, true, this.dropZone[0].coords);
+        let ship = this.updateShip(this.draggedShip, true, this.dropZone);
         this.player.moveShip(ship);
         this.player.board.placeShip(this.dropZone);
       }
 
       if(this.dropZone.length && !this.draggedShip.deployed) {
-        let ship = this.updateShip(this.draggedShip, true, this.dropZone[0].coords);
+        let ship = this.updateShip(this.draggedShip, true, this.dropZone);
         this.player.deployShip(ship);
         this.player.board.placeShip(this.dropZone);
       }
@@ -79,17 +79,17 @@ export class DeployService {
     event.source._dragRef.reset();
   }
 
-  private updateShip(source: Ship, deployed: boolean, coords?: SquareCoords): Ship {
+  private updateShip(source: Ship, deployed: boolean, squares?: Array<Square>): Ship {
     let ship = Object.assign({}, source);
-
-    if(deployed && coords) {
-      ship.coords = coords;
+    
+    if(deployed && squares) {
+      ship.coords = squares.map(({ coords }) => coords);
       ship.position = {
-        top: coords.x * 3,
-        left: coords.y * 3
+        top: ship.coords[0].x * 3,
+        left: ship.coords[0].y * 3
       };
     } else {
-      ship.coords = undefined;
+      ship.coords = [];
       ship.position = undefined;
     }
 

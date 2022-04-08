@@ -13,7 +13,7 @@ export class Ship {
   size: number;
   rotate: boolean;
   deployed: boolean;
-  coords?: ShipCoords;
+  coords: Array<ShipCoords>;
   position?: ShipPosition;
 
   constructor(id: number, size: number) {
@@ -21,7 +21,7 @@ export class Ship {
     this.size = size;
     this.rotate = false;
     this.deployed = false;
-    this.coords = undefined;
+    this.coords = [];
     this.position = undefined;
   }
 }

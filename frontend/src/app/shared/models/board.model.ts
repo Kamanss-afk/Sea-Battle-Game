@@ -19,26 +19,10 @@ export class Board {
   }
 
   public removeShip(ship: Ship): void {
-    if(!ship.coords) return;
-    const { x, y } = ship.coords;
-
-    let shipPlaces: Array<Square> = [];
-
-    if (ship.rotate) {
-
-      for (let i = x + (ship.size - 1); i >= x; i--) {       
-        shipPlaces.push(this.grid[i][y]);
-      }
-
-    } else {
-
-      for (let i = y + (ship.size - 1); i >= y; i--) {     
-        shipPlaces.push(this.grid[x][i]);
-      }
-
+    for (let i = 0; i < ship.coords.length; i++) {
+      const { x, y } = ship.coords[i];
+      this.grid[x][y].isShip = false;
     }
-
-    shipPlaces.map((square: Square) => square.isShip = false);
   }
 
   public getPlacesForShip(x: number, y: number, ship: Ship): Array<Square> {
