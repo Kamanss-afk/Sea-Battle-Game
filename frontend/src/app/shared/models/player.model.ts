@@ -2,11 +2,17 @@ import { Board } from "./board.model";
 import { Ship } from "./ship.model";
 
 export class Player {
+  id: string;
+  name: string;
+  score: number;
   board: Board;
   fleet: Array<Ship>;
   deployedShips: Array<Ship>;
 
-  constructor() {
+  constructor(name: string) {
+    this.id = Date.now().toString();
+    this.name = name;
+    this.score = 20;
     this.board = new Board();
     this.fleet = this.createFleet();
     this.deployedShips = [];
@@ -21,7 +27,7 @@ export class Player {
   }
 
   public deployShip(ship: Ship) {
-    const index = this.fleet.findIndex((source: Ship) => source.id == ship.id);4
+    const index = this.fleet.findIndex((source: Ship) => source.id == ship.id);
     this.deployedShips.push(ship);
     this.fleet.splice(index, 1);
   }
@@ -36,6 +42,10 @@ export class Player {
     let index = this.deployedShips.findIndex((source: Ship) => source.id == ship.id);
     this.deployedShips.splice(index, 1);
     this.deployedShips.push(ship);
+  }
+
+  public decreaseScore() {
+    this.score = this.score - 1;
   }
 
   private createFleet(): Array<Ship> {
