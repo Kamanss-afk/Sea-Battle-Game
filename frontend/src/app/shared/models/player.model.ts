@@ -9,13 +9,17 @@ export class Player {
   fleet: Array<Ship>;
   deployedShips: Array<Ship>;
 
-  constructor(name: string) {
+  constructor() {
     this.id = Date.now().toString();
-    this.name = name;
+    this.name = '';
     this.score = 20;
     this.board = new Board();
     this.fleet = this.createFleet();
     this.deployedShips = [];
+  }
+
+  public setName(name: string): void {
+    this.name = name;
   }
 
   public rotateShip(shipId: number) {

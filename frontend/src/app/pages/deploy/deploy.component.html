@@ -3,7 +3,7 @@
 
     <app-fleet
       class="deploy__platform-fleet"
-      [fleet]="gameService.player.fleet"
+      [fleet]="gameService.game.player.fleet"
       (onRotate)="deployService.shipRotate($event)"
       (onDragStarted)="deployService.dragStarted($event)"
       (onDragEnded)="deployService.dragEnded($event)">
@@ -11,11 +11,11 @@
 
     <fleet-map 
       class="deploy__platform-map"
-      [deployedShips]="gameService.player.deployedShips"
+      [deployedShips]="gameService.game.player.deployedShips"
       (onDragStarted)="deployService.dragStarted($event)"
       (onDragEnded)="deployService.dragEnded($event)">
       <app-board 
-        [board]="gameService.player.board.grid"
+        [board]="gameService.game.player.board.grid"
         (onSquareHover)="deployService.squareHover($event)"
         (onSquareLeave)="deployService.squareLeave($event)">
       </app-board>

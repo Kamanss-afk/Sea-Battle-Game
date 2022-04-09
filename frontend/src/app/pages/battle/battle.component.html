@@ -18,8 +18,8 @@
     </app-player>
   </div>
   <div class="battle__platform">
-    <app-board class="battle__platform-board" [board]="gameService.player.board.grid"></app-board>
+    <app-board class="battle__platform-board" [board]="gameService.game.player.board.grid"></app-board>
     <div class="battle__platform-message">Ваш ход!</div>
-    <app-board class="battle__platform-board" [board]="gameService.player.board.grid"></app-board>
+    <app-board class="battle__platform-board" [board]="gameService.game.opponent.board.grid"></app-board>
   </div>
 </div>

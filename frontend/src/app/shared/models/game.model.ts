@@ -1,7 +1,6 @@
 import { Player } from './player.model';
 
 export enum GameState {
-  NONE='NONE',
   INIT='INIT',
   DEPLOY='DEPLOY',
   BATTLE='BATTLE',
@@ -15,25 +14,17 @@ export enum GameTurn {
 
 export class Game {
   state: GameState;
+  player: Player;
+  opponent: Player;
   room: string | undefined;
   turn: GameTurn | undefined;
-  player: Player | undefined;
-  opponent: Player | undefined;
 
   constructor() {
-    this.state = GameState.NONE;
+    this.state = GameState.INIT;
+    this.player = new Player();
+    this.opponent = new Player();
     this.room = undefined;
     this.turn = undefined;
-    this.player = undefined;
-    this.opponent = undefined
-  }
-
-  public setPlayer(name: string): void {
-    this.player = new Player(name);
-  }
-
-  public setOpponent(name: string): void {
-    this.opponent = new Player(name);
   }
 
   public setState(state: GameState): void {

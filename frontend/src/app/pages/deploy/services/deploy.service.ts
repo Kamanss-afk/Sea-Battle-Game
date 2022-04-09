@@ -12,7 +12,7 @@ export class DeployService {
   private player: Player;
 
   constructor(private gameService: GameService) {
-    this.player = this.gameService.player;
+    this.player = this.gameService.game.player;
   }
 
   public shipRotate(shipId: number): void {

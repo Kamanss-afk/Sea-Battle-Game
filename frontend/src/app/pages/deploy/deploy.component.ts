@@ -15,7 +15,7 @@ export class DeployComponent {
   ) {}
 
   public ready() {
-    if(this.gameService.player.deployedShips.length == 10) {
+    if(this.gameService.game.player.deployedShips.length == 10) {
       this.router.navigate(['battle']);
     }
   }
