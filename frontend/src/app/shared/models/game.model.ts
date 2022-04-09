@@ -1,6 +1,7 @@
 import { Player } from './player.model';
 
 export enum GameState {
+  NONE='NONE',
   INIT='INIT',
   DEPLOY='DEPLOY',
   BATTLE='BATTLE',
@@ -16,14 +17,14 @@ export class Game {
   state: GameState;
   player: Player;
   opponent: Player;
-  room: string | undefined;
+  room: string;
   turn: GameTurn | undefined;
 
   constructor() {
-    this.state = GameState.INIT;
+    this.state = GameState.NONE;
     this.player = new Player();
     this.opponent = new Player();
-    this.room = undefined;
+    this.room = '';
     this.turn = undefined;
   }
 
