@@ -15,12 +15,14 @@ export enum GameTurn {
 
 export class Game {
   state: GameState;
+  room: string | undefined;
   turn: GameTurn | undefined;
   player: Player | undefined;
   opponent: Player | undefined;
 
   constructor() {
     this.state = GameState.NONE;
+    this.room = undefined;
     this.turn = undefined;
     this.player = undefined;
     this.opponent = undefined
@@ -40,5 +42,9 @@ export class Game {
 
   public setTurn(turn: GameTurn): void {
     this.turn = turn;
+  }
+
+  public setRoom(room: string): void {
+    this. room = room;
   }
 }
