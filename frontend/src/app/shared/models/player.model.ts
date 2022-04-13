@@ -9,8 +9,8 @@ export class Player {
   fleet: Array<Ship>;
   deployedShips: Array<Ship>;
 
-  constructor(name: string) {
-    this.id = Date.now().toString();
+  constructor(id: string, name: string) {
+    this.id = id;
     this.name = name;
     this.score = 20;
     this.board = new Board();
