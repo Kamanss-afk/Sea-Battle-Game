@@ -7,20 +7,20 @@
     </app-toggle>
 
     <app-input 
-      formControlName="username"
-      [placeholder]="'Enter your name'"
+      formControlName="name"
+      [placeholder]="'Введите имя'"
     ></app-input>
 
     <app-input 
-      *ngIf="form.get('code')"
-      formControlName="code"
-      [placeholder]="'Enter invite code'">
+      *ngIf="form.get('gameId')"
+      formControlName="gameId"
+      [placeholder]="'Введите код игры'">
     </app-input>
 
     <app-button 
       [type]="'danger'"
       (click)="submit()">
-      PLAY
+      НАЧАТЬ
     </app-button>
 
   </div>
