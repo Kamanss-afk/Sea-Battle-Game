@@ -4,6 +4,7 @@ import { Ship } from "./ship.model";
 export class Player {
   id: string;
   name: string;
+  ready: boolean;
   score: number;
   board: Board;
   fleet: Array<Ship>;
@@ -12,6 +13,7 @@ export class Player {
   constructor(id: string, name: string) {
     this.id = id;
     this.name = name;
+    this.ready = false;
     this.score = 20;
     this.board = new Board();
     this.fleet = this.createFleet();
