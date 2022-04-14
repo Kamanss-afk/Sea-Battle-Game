@@ -16,6 +16,7 @@ export class GameService {
   onTurnChange = this.socket.fromEvent<any>('turn-change');
   onTimerCountDown = this.socket.fromEvent<any>('timer-countdown');
   onGetShot = this.socket.fromEvent<any>('get-shot');
+  onOpponentReady = this.socket.fromEvent<any>('opponent-ready');
 
   onStartGameSuccess = this.socket.fromEvent<any>('game-start_success');
   onStartGameError = this.socket.fromEvent<any>('game-start_error');
