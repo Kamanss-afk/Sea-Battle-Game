@@ -1,4 +1,4 @@
-import { Ship } from './ship.model';
+import { Ship, ShipCoords } from './ship.model';
 import { Square } from './square.model';
 
 export class Board {
@@ -12,6 +12,16 @@ export class Board {
     return Array.from({ length: 10 }, (_, i: number) => 
       Array.from({ length: 10 }, (_, j: number) => new Square({ x: i, y: j }))
     );
+  }
+
+  public makeShot(hit: boolean, coords: ShipCoords) {
+    const { x, y } = coords;
+
+    if(hit) {
+      this.grid[x][y].isHit = true;
+    } else {
+      this.grid[x][y].isMiss = true;
+    }
   }
 
   public placeShip(dropZone: Array<Square>): void {
