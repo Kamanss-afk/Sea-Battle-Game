@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BattleGuard } from './core/guards/battle.guard';
+import { DeployGuard } from './core/guards/deploy.guard';
 
 const routes: Routes = [
   { 
@@ -7,11 +9,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(module => module.HomeModule)
   },
   { 
-    path: 'deploy', 
+    path: 'deploy',
+    canActivate: [DeployGuard],
     loadChildren: () => import('./pages/deploy/deploy.module').then(module => module.DeployModule) 
   },
   { 
-    path: 'battle', 
+    path: 'battle',
+    canActivate: [BattleGuard],
     loadChildren: () => import('./pages/battle/battle.module').then(module => module.BattleModule) 
   },
 ];
