@@ -1,5 +1,6 @@
 <input 
   class="input"
+  [class.input_invalid]="invalid"
   (input)="onInputValueChange($event)"
   [value]="value"
   [disabled]="disabled"

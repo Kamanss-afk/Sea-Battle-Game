@@ -8,6 +8,7 @@ import { ControlValueAccessor, NgControl } from "@angular/forms";
 })
 export class InputComponent implements ControlValueAccessor {
   @Input() placeholder: string = '';
+  @Input() invalid: boolean = false;
 
   public value: string | undefined;
   public disabled: boolean = false;
