@@ -13,7 +13,7 @@ export class GameService {
   constructor(private socket: Socket) {}
 
   onGameState = this.socket.fromEvent<any>('game-state');
-  onTurnChange = this.socket.fromEvent<any>('turn-change');
+  onTurnChange = this.socket.fromEvent<any>('change-turn');
   onTimerCountDown = this.socket.fromEvent<any>('timer-countdown');
   onGetShot = this.socket.fromEvent<any>('get-shot');
   onOpponentReady = this.socket.fromEvent<any>('opponent-ready');
