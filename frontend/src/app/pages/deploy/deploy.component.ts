@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { GameService } from '../../core/services/game.service';
-import { GameState } from '../../shared/models/game.model';
+import { GameState, GameTurn } from '../../shared/models/game.model';
 import { Player } from '../../shared/models/player.model';
 import { DeployService } from './services/deploy.service';
 
@@ -15,6 +15,7 @@ export class DeployComponent implements OnInit, OnDestroy {
   private opponentReady: Subscription;
   private deployShipsSuccess: Subscription;
   private deployShipsError: Subscription;
+  private turnChange: Subscription;
 
   constructor(
     public gameService: GameService,
@@ -34,7 +35,15 @@ export class DeployComponent implements OnInit, OnDestroy {
       
       this.gameService.opponent = new Player(id, name);
       this.gameService.opponent.ready = ready;
-    })
+    });
+
+    this.turnChange = this.gameService.onTurnChange.subscribe(({ turn }) => {
+      if(turn != this.gameService.player.id) {
+        this.gameService.game.turn = GameTurn.OPPONENT;
+      } else {
+        this.gameService.game.turn = GameTurn.PLAYER;
+      }
+    });
 
     this.deployShipsSuccess = this.gameService.onDeployShipsSuccess.subscribe(({ ready }) => {
       this.gameService.player.ready = ready;
@@ -50,6 +59,7 @@ export class DeployComponent implements OnInit, OnDestroy {
     this.opponentReady.unsubscribe();
     this.deployShipsSuccess.unsubscribe();
     this.deployShipsError.unsubscribe();
+    this.turnChange.unsubscribe();
   }
 
   public ready() {

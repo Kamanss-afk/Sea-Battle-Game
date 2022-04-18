@@ -28,8 +28,18 @@
     
   </div>
 
-  <ng-container *ngIf="false">
-    <app-message class="deploy__message"></app-message>
+  <ng-container *ngIf="gameService.game.state === 'INIT'">
+    <app-message class="deploy__message">
+      <div title>Код приглашения: <app-clipboard [text]="gameService.game.id"></app-clipboard></div>
+      <div body>Отправьте код второму игроку. Расстановка кораблей начнется сразу после присоединение противника</div>
+    </app-message>
+  </ng-container>
+
+  <ng-container *ngIf="gameService.player.ready">
+    <app-message class="deploy__message">
+      <div title>ВНИМАНИЕ!</div>
+      <div body>Бой начнется после того как противник расставит свои корабли</div>
+    </app-message>
   </ng-container>
 
 </div>
