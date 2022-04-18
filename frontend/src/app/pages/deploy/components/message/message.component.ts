@@ -1,9 +1,4 @@
-import { Component, Input } from "@angular/core";
-
-export interface MessageConfig {
-  title: string;
-  body: string;
-};
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'app-message',
@@ -11,8 +6,4 @@ export interface MessageConfig {
   styleUrls: ['message.component.scss'],
 })
 export class MessageComponent {
-  @Input() config: MessageConfig = {
-    title: 'Ожидание игры',
-    body: 'Игра начнется через некоторое время'
-  };
 }

@@ -1,7 +1,11 @@
 <div class="message">
   <div class="message__content">
-    <div class="message__title">{{ config.title }}</div>
-    <div class="message__body">{{ config.body }}</div>
+    <div class="message__title">
+      <ng-content select="[title]"></ng-content>
+    </div>
+    <div class="message__body">
+      <ng-content select="[body]"></ng-content>
+    </div>
     <div class="message__footer">
       ОЖИДАНИЕ
     </div>
