@@ -7,19 +7,22 @@
     <app-player
       class="battle__info-player"
       [leftSide]="true"
-      [name]="'Игрок2'"
-      [score]="20">
+      [name]="gameService.player.name"
+      [score]="gameService.player.score">
     </app-player>
     <app-timer [time]="gameService.game.time"></app-timer>
     <app-player 
       class="battle__info-player"
-      [name]="'Игрок2'"
-      [score]="20">
+      [name]="gameService.opponent.name"
+      [score]="gameService.opponent.score">
     </app-player>
   </div>
   <div class="battle__platform">
     <app-board class="battle__platform-board" [board]="gameService.player.board.grid"></app-board>
-    <div class="battle__platform-message">Ваш ход!</div>
+    
+    <div *ngIf="gameService.game.turn === 'PLAYER'" class="battle__platform-message">Ваш ход!</div>
+    <div *ngIf="gameService.game.turn === 'OPPONENT'" class="battle__platform-message">Ход противника!</div>
+    
     <app-board class="battle__platform-board" [board]="gameService.opponent.board.grid" (onSquareClick)="makeShot($event)"></app-board>
   </div>
 </div>

@@ -21,6 +21,7 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getShot = this.gameService.onGetShot.subscribe(({ coords, hit, destroyed }) => {
+      if(hit) this.gameService.player.decreaseScore();
       this.gameService.player.board.makeShot(hit, coords);
     });
 
@@ -33,6 +34,7 @@ export class BattleComponent implements OnInit, OnDestroy {
     });
 
     this.makeShotSuccess = this.gameService.onMakeShotSuccess.subscribe(({ coords, hit, destroyed }) => {
+      if(hit) this.gameService.opponent.decreaseScore();
       this.gameService.opponent.board.makeShot(hit, coords);
     });
 
