@@ -10,14 +10,14 @@
   flex-direction: column;
 
   &__text {
-    font-family: 'RampartOne';
     padding: 6rem;
-    font-size: 8rem;
-    color: map-get($color-primary, 800);
+    font-size: 10rem;
+    color: map-get($color-primary, 700);
+    text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.8);
   }
 
   &__form {
-    width: 30%;
+    width: 25%;
     min-width: 280px;
     display: flex;
     flex-direction: column;
