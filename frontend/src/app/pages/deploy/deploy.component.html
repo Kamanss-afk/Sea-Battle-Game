@@ -32,6 +32,7 @@
     <app-message class="deploy__message">
       <div title>Код приглашения: <app-clipboard [text]="gameService.game.id"></app-clipboard></div>
       <div body>Отправьте код второму игроку. Расстановка кораблей начнется сразу после присоединение противника</div>
+      <div footer>ОЖИДАНИЕ...</div>
     </app-message>
   </ng-container>
 
@@ -39,6 +40,7 @@
     <app-message class="deploy__message">
       <div title>ВНИМАНИЕ!</div>
       <div body>Бой начнется после того как противник расставит свои корабли</div>
+      <div footer>ОЖИДАНИЕ...</div>
     </app-message>
   </ng-container>
 

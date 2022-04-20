@@ -1,4 +1,4 @@
-@import '../../../../../assets/styles/variables.scss';
+@import '../../../../assets/styles/variables.scss';
 
 .message {
   width: 60%;
@@ -26,7 +26,6 @@
 
   &__footer {
     font-size: 2.5rem;
-    animation: blink 3s infinite;
     text-align: center;
   }
   
