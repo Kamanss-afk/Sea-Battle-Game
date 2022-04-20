@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -14,6 +14,7 @@ type FormMode = 'START' | 'JOIN';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  private gameState: Subscription;
 
   private startGameSuccess: Subscription;
   private startGameError: Subscription;
@@ -24,7 +25,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   private formMode: FormMode = 'START';
 
   public form: FormGroup = new FormGroup({
-    name: new FormControl(),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(7),
+    ]),
   });
 
   public controllers: [string, string] = ['НАЧАТЬ', 'ПРИСОЕДИНИТЬСЯ'];
@@ -35,8 +40,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.gameState = this.gameService.onGameState.subscribe(({ state }) => {
+      this.gameService.game.changeState(state);
+    });
+
     this.startGameSuccess = this.gameService.onStartGameSuccess.subscribe(({ gameId, player }) => {
-      console.log(gameId, player)
       this.gameService.game = new Game(gameId);
       this.gameService.player = new Player(player.id, player.name);
       this.router.navigate(['deploy']);
@@ -58,6 +66,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.gameState.unsubscribe();
     this.startGameSuccess.unsubscribe();
     this.startGameError.unsubscribe();
     this.joinGameError.unsubscribe();
@@ -77,13 +86,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     if(this.formMode == 'JOIN') {
-      this.form.addControl('gameId', new FormControl());
+      this.form.addControl('gameId', new FormControl('', [ Validators.required ]));
     }
   }
 
   public submit() {
     const name = this.form.controls['name'].value;
 
+    if (this.form.invalid) return;
+  
     if(this.formMode === 'JOIN') {
       const gameId = this.form.controls['gameId'].value;
       this.gameService.joinGame(name, gameId);
@@ -92,6 +103,5 @@ export class HomeComponent implements OnInit, OnDestroy {
     if(this.formMode === 'START') {
       this.gameService.startGame(name);
     }
-
   }
 }

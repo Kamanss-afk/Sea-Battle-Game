@@ -1,31 +1,48 @@
+@import '../../../assets/styles/variables.scss';
+
 .home {
 
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  flex-direction: column;
+
+  &__text {
+    font-family: 'RampartOne';
+    padding: 6rem;
+    font-size: 8rem;
+    color: map-get($color-primary, 800);
+  }
 
   &__form {
     width: 30%;
     min-width: 280px;
-    display: grid;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 
-  app-toggle {
+  &__form-toggle {
     width: 100%;
     height: 6rem;
   }
 
-  app-input {
+  &__form-input {
     width: 100%;
     height: 4rem;
+    margin-top: 2rem;
   }
 
-  app-button {
+  &__form-button {
     width: 100%;
     height: 4rem;
+    margin-top: 2rem;
+  }
+
+  .error-message {
+    color: map-get($color-danger, 500);
+    padding: 0.5rem 0 0 1rem;
   }
   
 }

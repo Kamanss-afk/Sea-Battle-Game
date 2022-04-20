@@ -1,27 +1,55 @@
 <div class="home">
-  <div class="home__form" [formGroup]="form">
+  
+  <div class="home__text">
+    МОРСКОЙ БОЙ
+  </div>
+
+  <form 
+    class="home__form"
+    #ngForm="ngForm"
+    [formGroup]="form"
+    (ngSubmit)="submit()">
 
     <app-toggle
+      class="home__form-toggle"
       [controllers]="controllers"
-      (onSwitch)="changeFormMode($event)">
+      (onSwitch)="changeFormMode($event);">
     </app-toggle>
 
-    <app-input 
+    <app-input
+      class="home__form-input"
       formControlName="name"
+      [invalid]="form.get('name')?.invalid && ngForm.submitted"
       [placeholder]="'Введите имя'"
     ></app-input>
 
-    <app-input 
+    <div class="error-message" *ngIf="form.get('name')?.hasError('required') && ngForm.submitted">
+      Обязательное поле для заполенения
+    </div>
+
+    <div class="error-message" *ngIf="form.get('name')?.hasError('minlength') && ngForm.submitted">
+      Минимальное количество символов {{ form.get('name').errors.minlength.requiredLength }}
+    </div>
+
+    <div class="error-message" *ngIf="form.get('name')?.hasError('maxlength') && ngForm.submitted">
+      Максимальное количество символов {{ form.get('name').errors.maxlength.requiredLength }}
+    </div>
+
+    <app-input
+      class="home__form-input"
       *ngIf="form.get('gameId')"
       formControlName="gameId"
+      [invalid]="form.get('gameId')?.invalid && ngForm.submitted"
       [placeholder]="'Введите код игры'">
     </app-input>
 
-    <app-button 
-      [type]="'danger'"
-      (click)="submit()">
+    <div class="error-message" *ngIf="form.get('gameId')?.hasError('required') && ngForm.submitted">
+      Обязательное поле для заполенения
+    </div>
+
+    <app-button  class="home__form-button" type="submit" [type]="'danger'">
       НАЧАТЬ
     </app-button>
 
-  </div>
+  </form>
 </div>
