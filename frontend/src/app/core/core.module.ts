@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -18,6 +19,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     BrowserAnimationsModule,
     SocketIoModule.forRoot(config),
     ToastrModule.forRoot(),
+    BackButtonDisableModule.forRoot(),
   ],
   exports: [
     LayoutComponent,
