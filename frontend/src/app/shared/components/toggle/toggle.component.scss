@@ -11,6 +11,8 @@
   min-height: 50px;
   height: inherit;
 
+  font-size: 1.2rem;
+
   &__input {
     display: none;
   }
@@ -19,6 +21,7 @@
     width: 100%;
     border-radius: map-get($border-radius, full);
     background-color: map-get($color-primary, 500);
+    box-shadow: $outside-shadow;
     position: relative;
     cursor: pointer;
   }
@@ -28,7 +31,7 @@
     height: 100%;
     position: absolute;
     border-radius: inherit;
-    background-color: map-get($color-primary, 600);
+    background-color: map-get($color-primary, 700);
     transition: transform .5s;
   }
 
@@ -37,13 +40,13 @@
     height: 100%;
     position: absolute;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    color: map-get($color-primary, 700);
+    color: map-get($color-primary, 800);
   }
 
   &__controller {
     text-align: center;
+    width: 50%;
   }
 
   &__input:checked + &__label &__switch {
