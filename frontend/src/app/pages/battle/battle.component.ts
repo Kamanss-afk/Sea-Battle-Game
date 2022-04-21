@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { GameService } from 'src/app/core/services/game.service';
 import { GameTurn } from 'src/app/shared/models/game.model';
@@ -17,7 +18,10 @@ export class BattleComponent implements OnInit, OnDestroy {
   private makeShotSuccess: Subscription;
   private makeShotError: Subscription;
 
-  constructor(public gameService: GameService) {}
+  constructor(
+    public gameService: GameService,
+    private toastr: ToastrService,
+  ) {}
 
   ngOnInit(): void {
     this.getShot = this.gameService.onGetShot.subscribe(({ coords, hit, destroyed }) => {
@@ -39,7 +43,7 @@ export class BattleComponent implements OnInit, OnDestroy {
     });
 
     this.makeShotError = this.gameService.onMakeShotError.subscribe(({ message }) => {
-      console.log(message);
+      this.toastr.error(message, 'Ошибка при выстреле! Повторите попытку');
     });
 
     this.turnChange = this.gameService.onTurnChange.subscribe(({ turn }) => {

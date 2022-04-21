@@ -18,7 +18,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   imports: [
     BrowserAnimationsModule,
     SocketIoModule.forRoot(config),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      timeOut: 10000,
+    }),
     BackButtonDisableModule.forRoot(),
   ],
   exports: [

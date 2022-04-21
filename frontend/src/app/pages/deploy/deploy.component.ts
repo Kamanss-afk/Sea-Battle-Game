@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { GameService } from '../../core/services/game.service';
 import { GameState, GameTurn } from '../../shared/models/game.model';
@@ -21,6 +22,7 @@ export class DeployComponent implements OnInit, OnDestroy {
     public gameService: GameService,
     public deployService: DeployService,
     private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +37,8 @@ export class DeployComponent implements OnInit, OnDestroy {
       
       this.gameService.opponent = new Player(id, name);
       this.gameService.opponent.ready = ready;
+
+      this.toastr.info(`Оппонент ${opponent.name} завершил расстановку кораблей и готов к бою!`);
     });
 
     this.turnChange = this.gameService.onTurnChange.subscribe(({ turn }) => {
@@ -51,6 +55,7 @@ export class DeployComponent implements OnInit, OnDestroy {
 
     this.deployShipsError = this.gameService.onDeployShipsError.subscribe(({ ready, message }) => {
       this.gameService.player.ready = ready;
+      this.toastr.error(message, 'Произошла ошибка при расстановке кораблей:');
     })
   }
 

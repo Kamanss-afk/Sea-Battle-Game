@@ -1,3 +1,5 @@
+@import '../assets/styles/variables.scss';
+
 ::ng-deep * {
   box-sizing: border-box;
   padding: 0px;
@@ -11,6 +13,40 @@
 
 ::ng-deep body {
   height: 100%;
+}
+
+::ng-deep {
+  .toast-title {
+    font-weight: normal !important;
+  }
+
+  .toast-error {
+    background: map-get($color-danger, 500) !important;
+  }
+
+  .toast-info {
+    background: map-get($color-primary, 800) !important;
+  }
+
+  .toast-success {
+    background: map-get($color-success, 500) !important;
+  }
+
+  .ngx-toastr {
+    border-radius: map-get($border-radius, small) !important;
+    color: map-get($color-neutral, 500) !important;
+  
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10px;
+      height: 100%;
+      width: 100%;
+      mask: url(../assets/img/close.svg) left/10% no-repeat;
+      background-color: map-get($color-neutral, 500);
+    }
+  }
 }
 
 @font-face {

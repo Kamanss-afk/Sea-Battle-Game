@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 
 import { GameService } from '../../core/services/game.service';
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private gameService: GameService,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -57,11 +59,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     this.startGameError = this.gameService.onStartGameError.subscribe(({ message }) => {
-      console.log(message);
+      this.toastr.error(message, 'Вы не можете начать новую игру:');
     });
 
     this.joinGameError = this.gameService.onJoinGameError.subscribe(({ message }) => {
-      console.log(message);
+      this.toastr.error(message, 'Вы не можете присоединиться к игре:');
     });
   }
 
