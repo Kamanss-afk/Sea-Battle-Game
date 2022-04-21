@@ -36,6 +36,16 @@
     </app-message>
   </ng-container>
 
+  <ng-container *ngIf="gameService.game.state === 'END'">
+    <app-message class="deploy__message">
+      <div title>БОЙ ОКОНЧЕН!</div>
+      <div body>Противник покинул игру</div>
+      <div footer>
+        <app-button>НА ГЛАВНУЮ</app-button>
+      </div>
+    </app-message>
+  </ng-container>
+
   <ng-container *ngIf="gameService.player.ready">
     <app-message class="deploy__message">
       <div title>ВНИМАНИЕ!</div>
