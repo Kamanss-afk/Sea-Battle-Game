@@ -29,8 +29,12 @@ export class BattleComponent implements OnInit, OnDestroy {
       this.gameService.player.board.makeShot(hit, coords);
     });
 
-    this.gameState = this.gameService.onGameState.subscribe(({ state }) => {
+    this.gameState = this.gameService.onGameState.subscribe(({ state, winner }) => {
       this.gameService.game.state = state;
+      
+      winner.id === this.gameService.player.id 
+        ? this.gameService.player.winner = true
+        : this.gameService.opponent.winner = true;
     });
 
     this.timerCountDown = this.gameService.onTimerCountDown.subscribe(({ duration, done}) => {

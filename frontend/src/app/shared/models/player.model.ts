@@ -5,6 +5,7 @@ export class Player {
   id: string;
   name: string;
   ready: boolean;
+  winner: boolean;
   score: number;
   board: Board;
   fleet: Array<Ship>;
@@ -14,6 +15,7 @@ export class Player {
     this.id = id;
     this.name = name;
     this.ready = false;
+    this.winner = false;
     this.score = 20;
     this.board = new Board();
     this.fleet = this.createFleet();
