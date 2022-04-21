@@ -1,4 +1,4 @@
-@import '../assets/styles/variables.scss';
+@import 'variables.scss';
 
 ::ng-deep * {
   box-sizing: border-box;
@@ -43,7 +43,7 @@
       left: 10px;
       height: 100%;
       width: 100%;
-      mask: url(../assets/img/close.svg) left/10% no-repeat;
+      mask: url(/assets/img/close.svg) left/10% no-repeat;
       background-color: map-get($color-neutral, 500);
     }
   }
@@ -51,10 +51,10 @@
 
 @font-face {
   font-family: RussoOne;
-  src: url(../assets/styles/fonts/RussoOne-Regular.ttf);
+  src: url(/assets/styles/fonts/RussoOne-Regular.ttf);
 }
 
 @font-face {
   font-family: RampartOne;
-  src: url(../assets/styles/fonts/RampartOne-Regular.ttf);
+  src: url(/assets/styles/fonts/RampartOne-Regular.ttf);
 }

@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/variables.scss';
+@import 'variables.scss';
 
 .board {
   box-shadow: $outside-shadow;
@@ -29,13 +29,13 @@
     &_miss {
       background: 
         map-get($color-primary, 500)
-        url('../../../../assets/img/miss.svg') center/30% no-repeat;
+        url('/assets/img/miss.svg') center/30% no-repeat;
     }
     
     &_hit {
       background: 
         map-get($color-neutral, 500)
-        url('../../../../assets/img/hit.svg') center/90% no-repeat;
+        url('/assets/img/hit.svg') center/90% no-repeat;
     }
   }
 

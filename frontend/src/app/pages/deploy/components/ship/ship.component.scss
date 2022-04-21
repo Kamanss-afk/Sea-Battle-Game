@@ -1,4 +1,4 @@
-@import '../../../../../assets/styles/variables.scss';
+@import 'variables.scss';
 
 .ship {
   
@@ -26,7 +26,7 @@
     height: 50%;
     width: 50%;
     cursor: move; 
-    mask: url('../../../../../assets/img/move.svg') center no-repeat;
+    mask: url('/assets/img/move.svg') center no-repeat;
     background-color: map-get($color-primary, 700);
   }
 

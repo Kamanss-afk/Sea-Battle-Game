@@ -1,4 +1,4 @@
-@import '../../../../../assets/styles/variables.scss';
+@import 'variables.scss';
 
 .timer {
   position: relative;
@@ -28,7 +28,7 @@
       transform: translateX(-50%);
       height: 150%;
       width: 150%;
-      mask: url('../../../../../assets/img/wheel.svg') center no-repeat;
+      mask: url('/assets/img/wheel.svg') center no-repeat;
       background-color: map-get($color-primary, 800);
     }
   }
