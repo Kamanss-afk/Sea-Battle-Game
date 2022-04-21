@@ -27,7 +27,7 @@
   </div>
 
   <ng-container *ngIf="gameService.game.state === 'END'">
-    <app-message class="battle__message">
+    <app-message>
       <div title>БОЙ ОКОНЧЕН!</div>
       <div body>
         <ng-container *ngIf="gameService.player.winner">Вы победили :)</ng-container>
