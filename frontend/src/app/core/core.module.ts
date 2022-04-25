@@ -21,6 +21,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       timeOut: 10000,
+      preventDuplicates: true,
     }),
     BackButtonDisableModule.forRoot(),
   ],
