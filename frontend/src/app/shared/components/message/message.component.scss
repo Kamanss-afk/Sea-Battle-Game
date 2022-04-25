@@ -11,26 +11,48 @@
   position: absolute;
   z-index: 100;
   backdrop-filter: blur(2px);
+  color: map-get($color-primary, 800);
 
   &__content {
     display: grid;
-    gap: 2rem;
+    gap: 1rem;
     width: 60%;
     padding: 3rem;
     font-size: 1.5rem;
-    background-color: rgba(#ffff, 0.7);
-    color: map-get($color-primary, 800);
+    background-color: #efefef;
+    box-shadow: 0px 0px 14px 4px inset;
     border-radius: map-get($border-radius, middle);
   }
 
   &__title {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
     font-size: 2.5rem;
-    color: map-get($color-danger, 500);
+
+    &::before, &::after {
+      content: '';
+      flex-grow: 1;
+      margin: 0 0.5rem;
+      height: 0.3rem;
+      background-color: currentColor;
+      border-radius: map-get($border-radius, full); 
+    }
+
+    &::before {
+      background-image: linear-gradient(to left, transparent, #efefef);
+    }
+
+    &::after {
+      background-image: linear-gradient(to right, transparent, #efefef);
+    }
   }
 
   &__body {
+    display: grid;
+    gap: 1rem;
     text-align: center;
+    color: map-get($color-primary, 800);
   }
 
   &__footer {
@@ -38,4 +60,12 @@
     text-align: center;
   }
   
+  
+  &_success {
+    color: map-get($color-success, 500);
+  }
+
+  &_danger {
+    color: map-get($color-danger, 500);
+  }
 }
