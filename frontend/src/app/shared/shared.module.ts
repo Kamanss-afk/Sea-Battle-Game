@@ -8,6 +8,7 @@ import { InputComponent } from './components/input/input.component';
 import { ToggleComponent } from './components/toggle/toggle.componnet';
 import { BoardComponent } from './components/board/board.component';
 import { MessageComponent } from './components/message/message.component';
+import { WaitingDotsComponent } from './components/waiting-dots/waiting-dots.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MessageComponent } from './components/message/message.component';
     ToggleComponent,
     BoardComponent,
     MessageComponent,
+    WaitingDotsComponent,
   ],
   imports: [
     CommonModule, 
@@ -33,6 +35,7 @@ import { MessageComponent } from './components/message/message.component';
     ToggleComponent,
     BoardComponent,
     MessageComponent,
+    WaitingDotsComponent,
   ],
 })
 export class SharedModule {}
