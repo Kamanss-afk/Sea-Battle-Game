@@ -7,8 +7,6 @@ import { FleetComponent } from './components/fleet/fleet.component';
 import { ShipComponent } from './components/ship/ship.component';
 import { FleetMapComponent } from './components/fleet-map/fleet-map.component';
 import { DeployService } from './services/deploy.service';
-import { ClipboardModule } from 'ngx-clipboard';
-import { ClipboardComponent } from './components/clipboard/clipboard.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +14,10 @@ import { ClipboardComponent } from './components/clipboard/clipboard.component';
     FleetComponent,
     ShipComponent,
     FleetMapComponent,
-    ClipboardComponent,
   ],
   imports: [
     DragDropModule,
     SharedModule,
-    ClipboardModule,
     RouterModule.forChild([
       { path: '', component: DeployComponent }
     ])
