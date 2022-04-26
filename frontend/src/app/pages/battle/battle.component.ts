@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { GameService } from 'src/app/core/services/game.service';
-import { GameTurn } from 'src/app/shared/models/game.model';
-import { Square } from 'src/app/shared/models/square.model';
+
+import { GameService } from '../../core/services/game.service';
+import { MessageService } from '../../core/services/message.service';
+import { GameState, GameTurn } from '../../shared/models/game.model';
+import { Square } from '../../shared/models/square.model';
 
 @Component({
   templateUrl: './battle.component.html',
@@ -20,6 +22,7 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   constructor(
     public gameService: GameService,
+    public messageService: MessageService,
     private toastr: ToastrService,
   ) {}
 
@@ -35,6 +38,8 @@ export class BattleComponent implements OnInit, OnDestroy {
       winner.id === this.gameService.player.id 
         ? this.gameService.player.winner = true
         : this.gameService.opponent.winner = true;
+
+      if(state === GameState.END) this.messageService.visible = true;
     });
 
     this.timerCountDown = this.gameService.onTimerCountDown.subscribe(({ duration, done}) => {

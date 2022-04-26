@@ -8,6 +8,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { BattleGuard } from './guards/battle.guard';
 import { DeployGuard } from './guards/deploy.guard';
 import { GameService } from './services/game.service';
+import { MessageService } from './services/message.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -30,6 +31,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   ],
   providers: [
     GameService,
+    MessageService,
     DeployGuard,
     BattleGuard
   ],

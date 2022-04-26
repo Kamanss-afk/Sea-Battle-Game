@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 
+import { MessageService } from '../../core/services/message.service';
 import { GameService } from '../../core/services/game.service';
 import { Game } from '../../shared/models/game.model';
 import { Player } from '../../shared/models/player.model';
@@ -38,6 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private gameService: GameService,
+    public messageService: MessageService,
     private toastr: ToastrService,
   ) {}
 
@@ -49,6 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.startGameSuccess = this.gameService.onStartGameSuccess.subscribe(({ gameId, player }) => {
       this.gameService.game = new Game(gameId);
       this.gameService.player = new Player(player.id, player.name);
+      this.messageService.visible = true;
       this.router.navigate(['deploy']);
     });
 

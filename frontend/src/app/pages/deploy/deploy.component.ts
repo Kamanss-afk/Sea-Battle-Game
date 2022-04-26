@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { MessageService } from '../../core/services/message.service';
 import { GameService } from '../../core/services/game.service';
 import { GameState, GameTurn } from '../../shared/models/game.model';
 import { Player } from '../../shared/models/player.model';
@@ -20,6 +21,7 @@ export class DeployComponent implements OnInit, OnDestroy {
 
   constructor(
     public gameService: GameService,
+    public messageService: MessageService,
     public deployService: DeployService,
     private router: Router,
     private toastr: ToastrService,
@@ -29,7 +31,18 @@ export class DeployComponent implements OnInit, OnDestroy {
     this.gameState = this.gameService.onGameState.subscribe(({ state }) => {
       this.gameService.game.changeState(state);
 
-      if(state === GameState.BATTLE) this.router.navigate(['battle']);
+      if(state === GameState.DEPLOY) {
+        this.messageService.visible = false;
+      }
+      
+      if(state === GameState.END) {
+        this.messageService.visible = true;
+      } 
+
+      if(state === GameState.BATTLE) {
+        this.messageService.visible = false;
+        this.router.navigate(['battle']);
+      }
     });
 
     this.opponentReady = this.gameService.onOpponentReady.subscribe(({ opponent }) => {
@@ -51,6 +64,7 @@ export class DeployComponent implements OnInit, OnDestroy {
 
     this.deployShipsSuccess = this.gameService.onDeployShipsSuccess.subscribe(({ ready }) => {
       this.gameService.player.ready = ready;
+      this.messageService.visible = true;
     });
 
     this.deployShipsError = this.gameService.onDeployShipsError.subscribe(({ ready, message }) => {
