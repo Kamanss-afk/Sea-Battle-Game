@@ -1,6 +1,5 @@
 import { Component, Input } from "@angular/core";
-
-type MessageType = 'DEFAULT' | 'SUCCESS' | 'DANGER';
+import { MessageConfig } from '../../../core/services/message.service';
 
 @Component({
   selector: 'app-message',
@@ -8,5 +7,6 @@ type MessageType = 'DEFAULT' | 'SUCCESS' | 'DANGER';
   styleUrls: ['message.component.scss'],
 })
 export class MessageComponent {
-  @Input() type: MessageType = 'DEFAULT';
+  @Input() visible: boolean = false;
+  @Input() config: MessageConfig = {} as MessageConfig;
 }

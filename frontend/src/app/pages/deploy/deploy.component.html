@@ -28,30 +28,9 @@
     
   </div>
 
-  <ng-container *ngIf="gameService.game.state === 'INIT'">
-    <app-message>
-      <div title>Код приглашения: <app-clipboard [text]="gameService.game.id"></app-clipboard></div>
-      <div body>Отправьте код второму игроку. Расстановка кораблей начнется сразу после присоединение противника</div>
-      <div footer>ОЖИДАНИЕ...</div>
-    </app-message>
-  </ng-container>
-
-  <ng-container *ngIf="gameService.game.state === 'END'">
-    <app-message>
-      <div title>БОЙ ОКОНЧЕН!</div>
-      <div body>Противник покинул игру</div>
-      <div footer>
-        <app-button>НА ГЛАВНУЮ</app-button>
-      </div>
-    </app-message>
-  </ng-container>
-
-  <ng-container *ngIf="gameService.player.ready">
-    <app-message>
-      <div title>ВНИМАНИЕ!</div>
-      <div body>Бой начнется после того как противник расставит свои корабли</div>
-      <div footer>ОЖИДАНИЕ...</div>
-    </app-message>
-  </ng-container>
+  <app-message
+    [visible]="messageService.visible"
+    [config]="messageService.getMessageConfig()"
+  ></app-message>
 
 </div>

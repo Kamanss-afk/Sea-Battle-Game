@@ -1,18 +1,39 @@
 <div [ngClass]="{
   'message': true,
-  'message_danger': type === 'DANGER',
-  'message_success': type === 'SUCCESS'}">
+  'message_visible': visible,
+  'message_default': config.type === 'DEFAULT',
+  'message_danger': config.type === 'DANGER',
+  'message_success': config.type === 'SUCCESS'}">
 
-  <div class="message__content">
-    <div class="message__title">
-      <ng-content select="[title]"></ng-content>
+  <ng-container [ngSwitch]="config.display">
+    
+    <div class="message__content" *ngSwitchCase="'INIT'">
+      <div class="message__title">{{ config.title }}</div>
+      <div class="message__body">
+        <app-clipboard [text]="config.clipboard"></app-clipboard>
+        <div>{{ config.body }}</div>
+      </div>
+      <div class="message__footer">
+        <app-waiting-dots></app-waiting-dots>
+      </div>
     </div>
-    <div class="message__body">
-      <ng-content select="[body]"></ng-content>
+  
+    <div class="message__content" *ngSwitchCase="'DEPLOY'">
+      <div class="message__title">{{ config.title }}</div>
+      <div class="message__body">{{ config.body }}</div>
+      <div class="message__footer">
+        <app-waiting-dots></app-waiting-dots>
+      </div>
     </div>
-    <div class="message__footer">
-      <ng-content select="[footer]"></ng-content>
+  
+    <div class="message__content" *ngSwitchCase="'END'">
+      <div class="message__title">{{ config.title }}</div>
+      <div class="message__body">{{ config.body }}</div>
+      <div class="message__footer">
+        <app-button>На главную</app-button>
+      </div>
     </div>
-  </div>
+
+  </ng-container>
 
 </div>

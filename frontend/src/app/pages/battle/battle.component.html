@@ -26,18 +26,9 @@
     <app-board class="battle__platform-board" [board]="gameService.opponent.board.grid" (onSquareClick)="makeShot($event)"></app-board>
   </div>
 
-  <ng-container *ngIf="gameService.game.state === 'END'">
-    <app-message>
-      <div title>БОЙ ОКОНЧЕН!</div>
-      <div body>
-        <ng-container *ngIf="gameService.player.winner">Вы победили :)</ng-container>
-        <ng-container *ngIf="gameService.opponent.winner">Вы проиграли :(</ng-container>
-        <ng-container *ngIf="!gameService.opponent.winner && !gameService.player.winner">Оппонент покинул игру</ng-container>
-      </div>
-      <div footer>
-        <app-button>НА ГЛАВНУЮ</app-button>
-      </div>
-    </app-message>
-  </ng-container>
-
+  <app-message
+    [visible]="messageService.visible"
+    [config]="messageService.getMessageConfig()"
+  ></app-message>
+  
 </div>
