@@ -22,6 +22,7 @@
     width: 100%;
     height: 6rem;
     background-color: map-get($color-primary, 600);
+    box-shadow: $outside-shadow;
     margin: 2rem 0 4rem 0;
     padding: 0.5rem;
   }
