@@ -35,11 +35,15 @@ export class BattleComponent implements OnInit, OnDestroy {
     this.gameState = this.gameService.onGameState.subscribe(({ state, winner }) => {
       this.gameService.game.state = state;
       
-      winner.id === this.gameService.player.id 
+      if(winner) {
+        winner.id === this.gameService.player.id 
         ? this.gameService.player.winner = true
         : this.gameService.opponent.winner = true;
+      }
 
-      if(state === GameState.END) this.messageService.visible = true;
+      if(state === GameState.END) {
+        this.messageService.visible = true;
+      }
     });
 
     this.timerCountDown = this.gameService.onTimerCountDown.subscribe(({ duration, done}) => {
