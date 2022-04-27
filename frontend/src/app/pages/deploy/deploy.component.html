@@ -3,6 +3,7 @@
 
     <app-fleet
       class="deploy__platform-fleet"
+      [draggable]="!gameService.player.ready"
       [fleet]="gameService.player.fleet"
       (onRotate)="deployService.shipRotate($event)"
       (onDragStarted)="deployService.dragStarted($event)"
@@ -11,6 +12,7 @@
 
     <fleet-map 
       class="deploy__platform-map"
+      [draggable]="!gameService.player.ready"
       [deployedShips]="gameService.player.deployedShips"
       (onDragStarted)="deployService.dragStarted($event)"
       (onDragEnded)="deployService.dragEnded($event)">
@@ -23,7 +25,12 @@
 
     <div class="deploy__platform-buttons">
       <app-button [type]="'danger'">ПОКИНУТЬ БОЙ</app-button>
-      <app-button [type]="'primary'" (click)="ready()">ГОТОВ К БОЮ</app-button>
+      <app-button 
+        [type]="'primary'"
+        [disabled]="gameService.player.ready"
+        (click)="ready()"
+        >ГОТОВ К БОЮ
+      </app-button>
     </div>
     
   </div>

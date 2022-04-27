@@ -9,6 +9,7 @@ import { Ship } from '../../../../shared/models/ship.model';
 })
 export class FleetMapComponent {
   @Input() deployedShips: Array<Ship> = [];
+  @Input() draggable: boolean = true;
 
   @Output() onDragStarted = new EventEmitter<{ event: CdkDragStart, ship: Ship }>()
   dragStarted(event: CdkDragStart, ship: Ship) {

@@ -10,6 +10,7 @@
           [rotate]="fleet[0].rotate"
 
           cdkDrag
+          [cdkDragDisabled]="!draggable"
           (cdkDragStarted)="dragStarted($event, fleet[0])"
           (cdkDragEnded)="dragEnded($event)">
             <div cdkDragHandle></div>

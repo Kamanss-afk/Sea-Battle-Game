@@ -6,6 +6,7 @@
       [rotate]="ship.rotate"
 
       cdkDrag
+      [cdkDragDisabled]="!draggable"
       (cdkDragStarted)="dragStarted($event, ship)"
       (cdkDragEnded)="dragEnded($event)"
       
@@ -14,7 +15,6 @@
         <div cdkDragHandle></div>
         <div *cdkDragPlaceholder></div>
     </app-ship>
-
   </div>
   <ng-content></ng-content>
 </div>
