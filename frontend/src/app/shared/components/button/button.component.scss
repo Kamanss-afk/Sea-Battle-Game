@@ -21,6 +21,10 @@
 
   &_disabled {
     background-color: map-get($color-neutral, 600);
+
+    &:active {
+      box-shadow: none;
+    }
   }
 
   &:hover {
