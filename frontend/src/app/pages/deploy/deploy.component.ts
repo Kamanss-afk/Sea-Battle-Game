@@ -83,11 +83,9 @@ export class DeployComponent implements OnInit, OnDestroy {
 
   public ready() {
     if(this.gameService.player.deployedShips.length == 10) {
-      const userId = this.gameService.player.id;
-      const gameId = this.gameService.game.id;
       const ships = this.gameService.player.deployedShips.map(({ coords }) => coords);
 
-      this.gameService.deployShips(userId, gameId, ships);
+      this.gameService.deployShips(ships);
     }
   }
 }

@@ -79,9 +79,7 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   public makeShot(square: Square): void {
     const { coords } = square;
-    const gameId = this.gameService.game.id;
-    const userId = this.gameService.player.id;
     
-    this.gameService.makeShot(userId, gameId, coords);
+    this.gameService.makeShot(coords);
   }
 }

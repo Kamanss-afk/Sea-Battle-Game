@@ -38,15 +38,15 @@ export class GameService {
     this.socket.emit('game-join', { name, gameId });
   }
 
-  public leaveGame(userId: string, gameId: string) {
-    this.socket.emit('game-leave', { userId, gameId });
+  public leaveGame() {
+    this.socket.emit('game-leave');
   }
 
-  public deployShips(userId: string, gameId: string, ships: Array<Array<ShipCoords>>) {
-    this.socket.emit('deploy-ships', { userId, gameId, ships });
+  public deployShips(ships: Array<Array<ShipCoords>>) {
+    this.socket.emit('deploy-ships', { ships });
   }
 
-  public makeShot(userId: string, gameId: string, coords: ShipCoords) {
-    this.socket.emit('make-shot', { userId, gameId, coords });
+  public makeShot(coords: ShipCoords) {
+    this.socket.emit('make-shot', { coords });
   }
 }
