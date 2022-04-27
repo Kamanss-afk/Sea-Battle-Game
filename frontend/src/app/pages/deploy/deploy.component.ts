@@ -29,7 +29,7 @@ export class DeployComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.gameState = this.gameService.onGameState.subscribe(({ state }) => {
-      this.gameService.game.changeState(state);
+      this.gameService.game.state = state;
 
       if(state === GameState.DEPLOY) {
         this.messageService.visible = false;

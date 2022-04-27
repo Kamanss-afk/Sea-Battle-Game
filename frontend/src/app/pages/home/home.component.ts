@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.gameState = this.gameService.onGameState.subscribe(({ state }) => {
-      this.gameService.game.changeState(state);
+      this.gameService.game.state = state;
     });
 
     this.startGameSuccess = this.gameService.onStartGameSuccess.subscribe(({ gameId, player }) => {

@@ -22,16 +22,4 @@ export class Game {
     this.time = 30;
     this.turn = undefined;
   }
-
-  public changeState(state: GameState): void {
-    this.state = state;
-  }
-
-  public changeTurn(turn: GameTurn): void {
-    this.turn = turn;
-  }
-
-  public changeTime(time: number): void {
-    this.time = time;
-  }
 }
