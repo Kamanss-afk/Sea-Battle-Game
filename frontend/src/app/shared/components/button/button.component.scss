@@ -11,6 +11,14 @@
   font-size: 1.2rem;
   color: map-get($color-neutral, 500);
 
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: 0 0 .2rem 0 map-get($color-neutral, 500) inset,
+  }
+
   &_primary {
     background-color: map-get($color-primary, 800);
   }
@@ -25,13 +33,5 @@
     &:active {
       box-shadow: none;
     }
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:active {
-    box-shadow: 0 0 .2rem 0 map-get($color-neutral, 500) inset,
   }
 }
