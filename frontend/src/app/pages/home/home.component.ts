@@ -16,8 +16,6 @@ type FormMode = 'START' | 'JOIN';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  private gameState: Subscription;
-
   private startGameSuccess: Subscription;
   private startGameError: Subscription;
 
@@ -44,10 +42,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.gameState = this.gameService.onGameState.subscribe(({ state }) => {
-      this.gameService.game.state = state;
-    });
-
     this.startGameSuccess = this.gameService.onStartGameSuccess.subscribe(({ gameId, player }) => {
       this.gameService.game = new Game(gameId);
       this.gameService.player = new Player(player.id, player.name);
@@ -71,7 +65,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.gameState.unsubscribe();
     this.startGameSuccess.unsubscribe();
     this.startGameError.unsubscribe();
     this.joinGameError.unsubscribe();
