@@ -2,7 +2,6 @@
   <div class="board__row" *ngFor="let row of board; let i = index">
     <div *ngFor="let square of row; let j = index">  
       <div
-        #squareElement
         [ngClass]="{
           'board__square': true,
           'board__square_drop': square.isDropZone,

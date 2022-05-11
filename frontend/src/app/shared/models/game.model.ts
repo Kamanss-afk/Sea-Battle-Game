@@ -1,6 +1,7 @@
 export enum GameState {
   INIT='INIT',
   DEPLOY='DEPLOY',
+  WAIT='WAIT',
   BATTLE='BATTLE',
   END='END',
 }

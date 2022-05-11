@@ -29,10 +29,13 @@ export class DeployComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.gameState = this.gameService.onGameState.subscribe(({ state }) => {
       this.gameService.game.state = state;
+
       this.messageService.setCurrentMessage(state);
 
       switch(state) {
         case 'DEPLOY': this.messageService.visible = false;
+        break;
+        case 'WAIT': this.messageService.visible = true;
         break;
         case 'END': this.messageService.visible = true;
         break;
@@ -54,7 +57,6 @@ export class DeployComponent implements OnInit, OnDestroy {
 
     this.deployShipsSuccess = this.gameService.onDeployShipsSuccess.subscribe(({ ready }) => {
       this.gameService.player.ready = ready;
-      this.messageService.visible = true;
     });
 
     this.deployShipsError = this.gameService.onDeployShipsError.subscribe(({ ready, message }) => {

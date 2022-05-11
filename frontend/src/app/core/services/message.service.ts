@@ -4,7 +4,7 @@ import { GameState } from '../../shared/models/game.model';
 import { GameService } from './game.service';
 
 type MessageType = 'DEFAULT' | 'SUCCESS' | 'DANGER';
-type MessageDisplay = 'INIT' | 'DEPLOY' | 'END';
+type MessageDisplay = 'INIT' | 'WAIT' | 'END';
 
 export interface MessageConfig {
   title: string;
@@ -32,11 +32,11 @@ export class MessageService {
       };
       break;
 
-      case 'DEPLOY': this.currentMessage = {
+      case 'WAIT': this.currentMessage = {
         title: 'ОЖИДАНИЕ БОЯ',
-        body: 'Бой начнется после того как противник расставит свои корабли',
+        body: 'Бой начнется после того как противник будет готов',
         type: 'DEFAULT',
-        display: 'DEPLOY',
+        display: 'WAIT',
       };
       break;
       
