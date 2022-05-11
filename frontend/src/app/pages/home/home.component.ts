@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { MessageService } from '../../core/services/message.service';
 import { GameService } from '../../core/services/game.service';
-import { Game } from '../../shared/models/game.model';
+import { Game, GameTurn } from '../../shared/models/game.model';
 import { Player } from '../../shared/models/player.model';
 
 type FormMode = 'START' | 'JOIN';
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.startGameSuccess = this.gameService.onStartGameSuccess.subscribe(({ gameId, player }) => {
-      this.gameService.game = new Game(gameId);
+      this.gameService.game = new Game(gameId, GameTurn.PLAYER);
       this.gameService.player = new Player(player.id, player.name);
 
       this.messageService.visible = true;
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     this.joinGameSuccess = this.gameService.onJoinGameSuccess.subscribe(({ gameId, player }) => {
-      this.gameService.game = new Game(gameId);
+      this.gameService.game = new Game(gameId, GameTurn.OPPONENT);
       this.gameService.player = new Player(player.id, player.name);
 
       this.messageService.setCurrentMessage(this.gameService.game.state);

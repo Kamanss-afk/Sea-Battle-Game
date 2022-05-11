@@ -14,12 +14,12 @@ export class Game {
   id: string;
   state: GameState;
   time: number;
-  turn: GameTurn | undefined;
+  turn: GameTurn;
 
-  constructor(id: string) {
+  constructor(id: string, turn: GameTurn) {
     this.id = id;
     this.state = GameState.INIT;
     this.time = 30;
-    this.turn = undefined;
+    this.turn = turn;
   }
 }

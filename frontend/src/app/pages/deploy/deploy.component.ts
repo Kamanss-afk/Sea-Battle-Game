@@ -17,7 +17,6 @@ export class DeployComponent implements OnInit, OnDestroy {
   private opponentReady: Subscription;
   private deployShipsSuccess: Subscription;
   private deployShipsError: Subscription;
-  private turnChange: Subscription;
 
   constructor(
     public gameService: GameService,
@@ -56,14 +55,6 @@ export class DeployComponent implements OnInit, OnDestroy {
       this.toastr.info(`Оппонент ${opponent.name} завершил расстановку кораблей и готов к бою!`);
     });
 
-    this.turnChange = this.gameService.onTurnChange.subscribe(({ turn }) => {
-      if(turn != this.gameService.player.id) {
-        this.gameService.game.turn = GameTurn.OPPONENT;
-      } else {
-        this.gameService.game.turn = GameTurn.PLAYER;
-      }
-    });
-
     this.deployShipsSuccess = this.gameService.onDeployShipsSuccess.subscribe(({ ready }) => {
       this.gameService.player.ready = ready;
       this.messageService.visible = true;
@@ -80,7 +71,6 @@ export class DeployComponent implements OnInit, OnDestroy {
     this.opponentReady.unsubscribe();
     this.deployShipsSuccess.unsubscribe();
     this.deployShipsError.unsubscribe();
-    this.turnChange.unsubscribe();
   }
 
   public ready() {
