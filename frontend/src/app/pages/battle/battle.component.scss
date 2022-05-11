@@ -38,9 +38,15 @@
     padding: 0 7rem;
   }
 
+  &_battle__platform-board {
+    flex-grow: 1;
+  }
+
   &__platform-message {
     display: flex;
+    flex-grow: 1;
     align-items: center;
+    justify-content: center;
     font-size: 3rem;
     color: map-get($color-primary, 800);
   }
