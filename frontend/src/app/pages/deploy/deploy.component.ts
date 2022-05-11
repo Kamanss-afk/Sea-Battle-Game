@@ -29,21 +29,18 @@ export class DeployComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.gameState = this.gameService.onGameState.subscribe(({ state }) => {
       this.gameService.game.state = state;
-
-      if(state === GameState.DEPLOY) {
-        this.messageService.visible = false;
-      }
-      
-      if(state === GameState.END) {
-        this.messageService.visible = true;
-      } 
-
-      if(state === GameState.BATTLE) {
-        this.messageService.visible = false;
-        this.router.navigate(['battle']);
-      }
-
       this.messageService.setCurrentMessage(state);
+
+      switch(state) {
+        case 'DEPLOY': this.messageService.visible = false;
+        break;
+        case 'END': this.messageService.visible = true;
+        break;
+        case 'BATTLE': 
+          this.messageService.visible = false;
+          this.router.navigate(['battle']);
+        break;
+      };
     });
 
     this.opponentReady = this.gameService.onOpponentReady.subscribe(({ opponent }) => {

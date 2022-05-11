@@ -79,33 +79,31 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public changeFormMode(event: MouseEvent) {
     switch(this.formMode) {
-      case 'START': this.formMode = 'JOIN';
+      case 'START':
+        this.formMode = 'JOIN';
+        this.form.addControl('gameId', new FormControl('', [ Validators.required ]));
       break;
-      case 'JOIN': this.formMode = 'START';
+
+      case 'JOIN': 
+        this.formMode = 'START';
+        this.form.removeControl('gameId');
       break;
-    }
-
-    if(this.formMode == 'START') {
-      this.form.removeControl('gameId');
-    }
-
-    if(this.formMode == 'JOIN') {
-      this.form.addControl('gameId', new FormControl('', [ Validators.required ]));
     }
   }
 
   public submit() {
+    if (this.form.invalid) return;
+
     const name = this.form.controls['name'].value;
 
-    if (this.form.invalid) return;
-  
-    if(this.formMode === 'JOIN') {
-      const gameId = this.form.controls['gameId'].value;
-      this.gameService.joinGame(name, gameId);
-    }
-
-    if(this.formMode === 'START') {
-      this.gameService.startGame(name);
+    switch(this.formMode) {
+      case 'START': this.gameService.startGame(name);
+      break;
+      
+      case 'JOIN':
+        const gameId = this.form.controls['gameId'].value;
+        this.gameService.joinGame(name, gameId);
+      break;
     }
   }
 }
