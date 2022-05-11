@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
+
 import { Ship } from '../../../shared/models/ship.model';
 import { GameService } from '../../../core/services/game.service';
 import { Player } from '../../../shared/models/player.model';
 import { Square } from '../../../shared/models/square.model';
-import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
 
 @Injectable()
 export class DeployService {

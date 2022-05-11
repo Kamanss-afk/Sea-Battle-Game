@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { GameState } from 'src/app/shared/models/game.model';
+
+import { GameState } from '../../shared/models/game.model';
 import { GameService } from './game.service';
 
 type MessageType = 'DEFAULT' | 'SUCCESS' | 'DANGER';

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { ShipCoords } from 'src/app/shared/models/ship.model';
+
+import { ShipCoords } from '../../shared/models/ship.model';
 import { Game } from '../../shared/models/game.model';
 import { Player } from '../../shared/models/player.model';
 

@@ -1,9 +1,5 @@
-import { 
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { Square } from '../../models/square.model';
 
 @Component({

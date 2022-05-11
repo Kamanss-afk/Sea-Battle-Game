@@ -1,5 +1,5 @@
-import { Board } from "./board.model";
-import { Ship } from "./ship.model";
+import { Board } from './board.model';
+import { Ship } from './ship.model';
 
 export class Player {
   id: string;
