@@ -1,8 +1,10 @@
 <div class="battle">
+
   <div class="battle__buttons">
     <app-button [type]="'primary'">ПРАВИЛА ИГРЫ</app-button>
     <app-button [type]="'danger'">ВЫЙТИ ИЗ ИГРЫ</app-button>
   </div>
+
   <div class="battle__info">
     <app-player
       class="battle__info-player"
@@ -10,18 +12,19 @@
       [name]="gameService.player.name"
       [score]="gameService.player.score">
     </app-player>
+
     <app-timer [time]="gameService.game.time"></app-timer>
+    
     <app-player 
       class="battle__info-player"
       [name]="gameService.opponent.name"
       [score]="gameService.opponent.score">
     </app-player>
   </div>
+
   <div class="battle__platform">
     <app-board class="battle__platform-board" [board]="gameService.player.board.grid"></app-board>
-    
     <div class="battle__platform-message">{{ gameService.game.turn === 'PLAYER' ? 'Ваш ход!' : 'Ход противника!' }}</div>
-    
     <app-board class="battle__platform-board" [board]="gameService.opponent.board.grid" (onSquareClick)="makeShot($event)"></app-board>
   </div>
 
