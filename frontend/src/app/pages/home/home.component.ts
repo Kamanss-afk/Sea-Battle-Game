@@ -45,13 +45,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.startGameSuccess = this.gameService.onStartGameSuccess.subscribe(({ gameId, player }) => {
       this.gameService.game = new Game(gameId);
       this.gameService.player = new Player(player.id, player.name);
+
       this.messageService.visible = true;
+      this.messageService.setCurrentMessage(this.gameService.game.state);
+
       this.router.navigate(['deploy']);
     });
 
     this.joinGameSuccess = this.gameService.onJoinGameSuccess.subscribe(({ gameId, player }) => {
       this.gameService.game = new Game(gameId);
       this.gameService.player = new Player(player.id, player.name);
+
+      this.messageService.setCurrentMessage(this.gameService.game.state);
+      
       this.router.navigate(['deploy']);
     });
 

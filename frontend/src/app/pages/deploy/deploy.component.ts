@@ -43,6 +43,8 @@ export class DeployComponent implements OnInit, OnDestroy {
         this.messageService.visible = false;
         this.router.navigate(['battle']);
       }
+
+      this.messageService.setCurrentMessage(state);
     });
 
     this.opponentReady = this.gameService.onOpponentReady.subscribe(({ opponent }) => {

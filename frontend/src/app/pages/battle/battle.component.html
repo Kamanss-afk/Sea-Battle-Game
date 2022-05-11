@@ -20,15 +20,14 @@
   <div class="battle__platform">
     <app-board class="battle__platform-board" [board]="gameService.player.board.grid"></app-board>
     
-    <div *ngIf="gameService.game.turn === 'PLAYER'" class="battle__platform-message">Ваш ход!</div>
-    <div *ngIf="gameService.game.turn === 'OPPONENT'" class="battle__platform-message">Ход противника!</div>
+    <div class="battle__platform-message">{{ gameService.game.turn === 'PLAYER' ? 'Ваш ход!' : 'Ход противника!' }}</div>
     
     <app-board class="battle__platform-board" [board]="gameService.opponent.board.grid" (onSquareClick)="makeShot($event)"></app-board>
   </div>
 
   <app-message
     [visible]="messageService.visible"
-    [config]="messageService.getMessageConfig()"
+    [config]="messageService.currentMessage"
   ></app-message>
   
 </div>
