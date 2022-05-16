@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 type ButtonType = 'primary' | 'danger';
 
@@ -10,4 +10,9 @@ type ButtonType = 'primary' | 'danger';
 export class ButtonComponent {
   @Input() type: ButtonType = 'primary';
   @Input() disabled: boolean = false;
+
+  @Output() onClick = new EventEmitter<MouseEvent>();
+  click(event: MouseEvent){
+    this.onClick.emit(event);
+  }
 }
