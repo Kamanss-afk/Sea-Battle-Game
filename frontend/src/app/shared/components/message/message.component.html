@@ -30,7 +30,7 @@
       <div class="message__title">{{ config.title }}</div>
       <div class="message__body">{{ config.body }}</div>
       <div class="message__footer">
-        <app-button>На главную</app-button>
+        <app-button (onClick)="redirect($event)">На главную</app-button>
       </div>
     </div>
 
