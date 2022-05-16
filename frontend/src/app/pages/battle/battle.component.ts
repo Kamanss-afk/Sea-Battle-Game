@@ -34,7 +34,6 @@ export class BattleComponent implements OnInit, OnDestroy {
 
     this.gameState = this.gameService.onGameState.subscribe(({ state, winner }) => {
       this.gameService.game.state = state;
-      this.messageService.setCurrentMessage(state);
       
       if(winner) {
         winner.id === this.gameService.player.id 
@@ -45,6 +44,8 @@ export class BattleComponent implements OnInit, OnDestroy {
       if(state === GameState.END) {
         this.messageService.visible = true;
       }
+
+      this.messageService.setCurrentMessage(state);
     });
 
     this.timerCountDown = this.gameService.onTimerCountDown.subscribe(({ duration, done}) => {
