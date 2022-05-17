@@ -1,17 +1,16 @@
+import { BehaviorSubject } from 'rxjs';
 import { Ship, ShipCoords } from './ship.model';
 import { Square } from './square.model';
 
 export class Board {
   grid: Array<Array<Square>> = [];
 
+  gridSubject: BehaviorSubject<Array<Array<Square>>> = new BehaviorSubject(this.grid); 
+
   constructor() {
     this.grid = this.createBoardGrid();
-  }
 
-  private createBoardGrid(): Array<Array<Square>> {
-    return Array.from({ length: 10 }, (_, i: number) => 
-      Array.from({ length: 10 }, (_, j: number) => new Square({ x: i, y: j }))
-    );
+    this.gridSubject.next([...this.grid]);
   }
 
   public makeShot(hit: boolean, coords: ShipCoords) {
@@ -22,10 +21,14 @@ export class Board {
     } else {
       this.grid[x][y].isMiss = true;
     }
+
+    this.gridSubject.next([...this.grid]);
   }
 
   public placeShip(dropZone: Array<Square>): void {
     dropZone.map((square: Square) => square.isShip = true);
+
+    this.gridSubject.next([...this.grid]);
   }
 
   public removeShip(ship: Ship): void {
@@ -33,6 +36,8 @@ export class Board {
       const { x, y } = ship.coords[i];
       this.grid[x][y].isShip = false;
     }
+
+    this.gridSubject.next([...this.grid]);
   }
 
   public getPlacesForShip(x: number, y: number, ship: Ship): Array<Square> {
@@ -92,18 +97,26 @@ export class Board {
 
       }
     }
+
+    this.gridSubject.next([...this.grid]);
   }
 
   public unmarkForbiddenSquares(): void {
     this.grid.map((row: Array<Square>) => row.map((square: Square) => square.isForbidden = false));
+
+    this.gridSubject.next([...this.grid]);
   }
 
   public markDropZone(dropZone: Array<Square>): void {
     dropZone.map((place: Square) => place.isDropZone = true);
+
+    this.gridSubject.next([...this.grid]);
   }
 
   public unmarkDropZone(dropZone: Array<Square>): void {
     dropZone.map((place: Square) => place.isDropZone = false);
+
+    this.gridSubject.next([...this.grid]);
   }
   
   private getSquaresNearby(square: Square): Array<Square> {
@@ -130,5 +143,11 @@ export class Board {
 
   private isValidCoords = (x: number, y: number): boolean => {
     return ((x >= 0 && x <= 9) && (y >= 0 && y <= 9)) ? true : false;
+  }
+
+  private createBoardGrid(): Array<Array<Square>> {
+    return Array.from({ length: 10 }, (_, i: number) => 
+      Array.from({ length: 10 }, (_, j: number) => new Square({ x: i, y: j }))
+    );
   }
 }

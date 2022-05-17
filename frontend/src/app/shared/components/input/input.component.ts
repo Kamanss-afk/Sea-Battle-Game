@@ -1,10 +1,11 @@
-import { Component, Input, Self } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   templateUrl: 'input.component.html',
   styleUrls: ['input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent implements ControlValueAccessor {
   @Input() placeholder: string = '';

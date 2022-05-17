@@ -31,21 +31,18 @@ export class Player {
   }
 
   public deployShip(ship: Ship) {
-    const index = this.fleet.findIndex((source: Ship) => source.id == ship.id);
-    this.deployedShips.push(ship);
-    this.fleet.splice(index, 1);
+    this.deployedShips = [...this.deployedShips, ship];
+    this.fleet = this.fleet.filter((source: Ship) => source.id != ship.id);
   }
 
   public removeShip(ship: Ship) {
-    const index = this.deployedShips.findIndex((source: Ship) => source.id == ship.id);
-    this.deployedShips.splice(index, 1);
-    this.fleet.unshift(ship);
+    this.deployedShips = this.deployedShips.filter((source: Ship) => source.id != ship.id);
+    this.fleet = [ship, ...this.fleet];
   }
 
   public moveShip(ship: Ship) {
-    let index = this.deployedShips.findIndex((source: Ship) => source.id == ship.id);
-    this.deployedShips.splice(index, 1);
-    this.deployedShips.push(ship);
+    this.deployedShips = this.deployedShips.filter((source: Ship) => source.id != ship.id);
+    this.deployedShips = [ship, ...this.deployedShips];
   }
 
   public decreaseScore() {

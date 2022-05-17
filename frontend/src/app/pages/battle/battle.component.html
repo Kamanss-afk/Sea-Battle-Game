@@ -13,7 +13,7 @@
       [score]="gameService.player.score">
     </app-player>
 
-    <app-timer [time]="gameService.game.time"></app-timer>
+    <app-timer [time]="gameService.game.time | async"></app-timer>
     
     <app-player 
       class="battle__info-player"
@@ -23,14 +23,25 @@
   </div>
 
   <div class="battle__platform">
-    <app-board class="battle__platform-board" [board]="gameService.player.board.grid"></app-board>
-    <div class="battle__platform-message">{{ gameService.game.turn === 'PLAYER' ? 'Ваш ход!' : 'Ход противника!' }}</div>
-    <app-board class="battle__platform-board" [board]="gameService.opponent.board.grid" (onSquareClick)="makeShot($event)"></app-board>
+    <app-board 
+      class="battle__platform-board" 
+      [board]="gameService.player.board.gridSubject | async">
+    </app-board>
+
+    <div class="battle__platform-message">
+      {{ gameService.game.turn === 'PLAYER' ? 'Ваш ход!' : 'Ход противника!' }}
+    </div>
+
+    <app-board 
+      class="battle__platform-board" 
+      [board]="gameService.opponent.board.gridSubject | async" 
+      (onSquareClick)="makeShot($event)">
+    </app-board>
   </div>
 
   <app-message
-    [visible]="messageService.visible"
-    [config]="messageService.currentMessage"
-  ></app-message>
+    [visible]="messageService.visible | async"
+    [config]="messageService.currentMessage | async">
+  </app-message>
   
 </div>

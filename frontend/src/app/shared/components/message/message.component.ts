@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { MessageConfig } from '../../../core/services/message.service';
 
@@ -6,6 +6,7 @@ import { MessageConfig } from '../../../core/services/message.service';
   selector: 'app-message',
   templateUrl: 'message.component.html',
   styleUrls: ['message.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessageComponent {
   @Input() visible: boolean = false;

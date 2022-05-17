@@ -1,3 +1,5 @@
+import { BehaviorSubject } from "rxjs";
+
 export enum GameState {
   INIT='INIT',
   DEPLOY='DEPLOY',
@@ -14,13 +16,13 @@ export enum GameTurn {
 export class Game {
   id: string;
   state: GameState;
-  time: number;
   turn: GameTurn;
+  time: BehaviorSubject<number>;
 
   constructor(id: string, turn: GameTurn) {
     this.id = id;
     this.state = GameState.INIT;
-    this.time = 30;
     this.turn = turn;
+    this.time = new BehaviorSubject(30);
   }
 }

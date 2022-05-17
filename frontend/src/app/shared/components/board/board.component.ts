@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Square } from '../../models/square.model';
 
@@ -6,6 +6,7 @@ import { Square } from '../../models/square.model';
   selector: 'app-board',
   templateUrl: 'board.component.html',
   styleUrls: ['board.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BoardComponent {
   @Input() board: Array<Array<Square>> = [];

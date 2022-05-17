@@ -1,5 +1,5 @@
 import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Ship } from '../../../../shared/models/ship.model';
 
@@ -7,6 +7,7 @@ import { Ship } from '../../../../shared/models/ship.model';
   selector: 'fleet-map',
   templateUrl: 'fleet-map.component.html',
   styleUrls: ['fleet-map.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FleetMapComponent {
   @Input() deployedShips: Array<Ship> = [];

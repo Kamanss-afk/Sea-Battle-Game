@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -11,6 +11,7 @@ import { DeployService } from './services/deploy.service';
 @Component({
   templateUrl: './deploy.component.html',
   styleUrls: ['./deploy.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeployComponent implements OnInit, OnDestroy {
   private gameState: Subscription;
@@ -33,14 +34,14 @@ export class DeployComponent implements OnInit, OnDestroy {
       this.messageService.setCurrentMessage(state);
 
       switch(state) {
-        case 'DEPLOY': this.messageService.visible = false;
+        case 'DEPLOY': this.messageService.visible.next(false);
         break;
-        case 'WAIT': this.messageService.visible = true;
+        case 'WAIT': this.messageService.visible.next(true);
         break;
-        case 'END': this.messageService.visible = true;
+        case 'END': this.messageService.visible.next(true);
         break;
         case 'BATTLE': 
-          this.messageService.visible = false;
+          this.messageService.visible.next(false);
           this.router.navigate(['battle']);
         break;
       };

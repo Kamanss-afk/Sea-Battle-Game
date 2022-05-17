@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 
@@ -10,6 +10,7 @@ import { Square } from '../../shared/models/square.model';
 @Component({
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BattleComponent implements OnInit, OnDestroy {
   private getShot: Subscription;
@@ -42,14 +43,14 @@ export class BattleComponent implements OnInit, OnDestroy {
       }
 
       if(state === GameState.END) {
-        this.messageService.visible = true;
+        this.messageService.visible.next(true);
       }
 
       this.messageService.setCurrentMessage(state);
     });
 
     this.timerCountDown = this.gameService.onTimerCountDown.subscribe(({ duration, done}) => {
-      this.gameService.game.time = duration;
+      this.gameService.game.time.next(duration);
     });
 
     this.makeShotSuccess = this.gameService.onMakeShotSuccess.subscribe(({ coords, hit, destroyed }) => {

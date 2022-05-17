@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -14,6 +14,7 @@ type FormMode = 'START' | 'JOIN';
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private startGameSuccess: Subscription;
@@ -46,7 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.gameService.game = new Game(gameId, GameTurn.PLAYER);
       this.gameService.player = new Player(player.id, player.name);
 
-      this.messageService.visible = true;
+      this.messageService.visible.next(true);
       this.messageService.setCurrentMessage(this.gameService.game.state);
 
       this.router.navigate(['deploy']);

@@ -17,7 +17,7 @@
       (onDragStarted)="deployService.dragStarted($event)"
       (onDragEnded)="deployService.dragEnded($event)">
       <app-board 
-        [board]="gameService.player.board.grid"
+        [board]="gameService.player.board.gridSubject | async"
         (onSquareHover)="deployService.squareHover($event)"
         (onSquareLeave)="deployService.squareLeave($event)">
       </app-board>
@@ -36,8 +36,8 @@
   </div>
 
   <app-message
-    [visible]="messageService.visible"
-    [config]="messageService.currentMessage"
-  ></app-message>
+    [visible]="messageService.visible | async"
+    [config]="messageService.currentMessage | async">
+  </app-message>
 
 </div>
