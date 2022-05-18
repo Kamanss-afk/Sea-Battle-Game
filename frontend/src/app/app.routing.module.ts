@@ -19,6 +19,10 @@ const routes: Routes = [
     canActivate: [BattleGuard],
     loadChildren: () => import('./pages/battle/battle.module').then(module => module.BattleModule) 
   },
+  {
+    path: '**',
+    redirectTo: '/',
+  },
 ];
 
 @NgModule({
