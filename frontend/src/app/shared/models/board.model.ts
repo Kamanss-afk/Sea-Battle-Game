@@ -3,14 +3,12 @@ import { Ship, ShipCoords } from './ship.model';
 import { Square } from './square.model';
 
 export class Board {
-  grid: Array<Array<Square>> = [];
-
-  gridSubject: BehaviorSubject<Array<Array<Square>>> = new BehaviorSubject(this.grid); 
+  grid: Array<Array<Square>>;
+  gridSubject: BehaviorSubject<Array<Array<Square>>>;
 
   constructor() {
     this.grid = this.createBoardGrid();
-
-    this.gridSubject.next([...this.grid]);
+    this.gridSubject = new BehaviorSubject([...this.grid])
   }
 
   public makeShot(hit: boolean, coords: ShipCoords) {
