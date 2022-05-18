@@ -74,10 +74,11 @@ export class DeployComponent implements OnInit, OnDestroy {
   }
 
   public ready() {
-    if(this.gameService.player.deployedShips.length == 10) {
+    if(this.gameService.player.deployedShips.length === 10) {
       const ships = this.gameService.player.deployedShips.map(({ coords }) => coords);
-
       this.gameService.deployShips(ships);
+    } else {
+      this.toastr.error('Вам необходимо расставить все корабли');
     }
   }
 }
