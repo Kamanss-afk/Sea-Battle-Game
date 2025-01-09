@@ -53,7 +53,7 @@ export class DeployComponent implements OnInit, OnDestroy {
       this.gameService.opponent = new Player(id, name);
       this.gameService.opponent.ready = ready;
 
-      this.toastr.info(`Оппонент ${opponent.name} завершил расстановку кораблей и готов к бою!`);
+      this.toastr.info(`Opponent ${opponent.name} has completed ship deployment and ready for battle!`);
     });
 
     this.deployShipsSuccess = this.gameService.onDeployShipsSuccess.subscribe(({ ready }) => {
@@ -62,7 +62,7 @@ export class DeployComponent implements OnInit, OnDestroy {
 
     this.deployShipsError = this.gameService.onDeployShipsError.subscribe(({ ready, message }) => {
       this.gameService.player.ready = ready;
-      this.toastr.error(message, 'Произошла ошибка при расстановке кораблей:');
+      this.toastr.error(message, 'An error has been made when deploying ships:');
     })
   }
 
@@ -78,7 +78,7 @@ export class DeployComponent implements OnInit, OnDestroy {
       const ships = this.gameService.player.deployedShips.map(({ coords }) => coords);
       this.gameService.deployShips(ships);
     } else {
-      this.toastr.error('Вам необходимо расставить все корабли');
+      this.toastr.error('You need to deploy all the ships');
     }
   }
 }

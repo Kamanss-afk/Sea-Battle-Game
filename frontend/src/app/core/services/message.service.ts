@@ -25,8 +25,8 @@ export class MessageService {
   public setCurrentMessage(state: GameState) {
     switch(state) {
       case 'INIT': this.currentMessage.next({
-        title: 'ОЖИДАНИЕ ИГРОКОВ',
-        body: 'Отправьте код второму игроку. Расстановка кораблей начнется сразу после присоединение противника',
+        title: 'WAITING FOR PLAYERS',
+        body: 'Share the code with the second player. The ships deployment will start once player join.',
         type: 'DEFAULT',
         display: 'INIT',
         clipboard: this.gameService.game.id,
@@ -34,16 +34,16 @@ export class MessageService {
       break;
 
       case 'WAIT': this.currentMessage.next({
-        title: 'ОЖИДАНИЕ БОЯ',
-        body: 'Бой начнется после того как противник будет готов',
+        title: 'WAITING FOR BATTLE',
+        body: 'The battle will begin as soon as the opponent is ready.',
         type: 'DEFAULT',
         display: 'WAIT',
       });
       break;
       
       case 'END': this.currentMessage.next({
-        title: 'БОЙ ОКОНЧЕН',
-        body: this.gameService.player.winner ? 'Вы победили' : this.gameService.opponent?.winner ? 'Вы проиграли' : 'Оппонент покинул игру',
+        title: 'BATTLE ENDED',
+        body: this.gameService.player.winner ? 'You won!' : this.gameService.opponent?.winner ? 'You lost!' : 'The opponent has left the game!',
         type: this.gameService.player.winner ? 'SUCCESS' : this.gameService.opponent?.winner ? 'DANGER' : 'DEFAULT',
         display: 'END',
       });

@@ -12,7 +12,7 @@ export class BoardComponent {
   @Input() board: Array<Array<Square>> = [];
 
   public numbers: Array<string> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-  public letters: Array<string> = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'К'];
+  public letters: Array<string> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 
   @Output() onSquareClick = new EventEmitter<Square>()
   squareClick(square: Square) {

@@ -1,8 +1,8 @@
 <div class="battle">
 
   <div class="battle__buttons">
-    <app-button [type]="'primary'">ПРАВИЛА ИГРЫ</app-button>
-    <app-button [type]="'danger'">ВЫЙТИ ИЗ ИГРЫ</app-button>
+    <app-button [type]="'primary'">GAME RULES</app-button>
+    <app-button [type]="'danger'">EXIT GAME</app-button>
   </div>
 
   <div class="battle__info">
@@ -29,7 +29,7 @@
     </app-board>
 
     <div class="battle__platform-message">
-      {{ gameService.game.turn === 'PLAYER' ? 'Ваш ход!' : 'Ход противника!' }}
+      {{ gameService.game.turn === 'PLAYER' ? 'Your turn!' : "Opponent's turn!" }}
     </div>
 
     <app-board 

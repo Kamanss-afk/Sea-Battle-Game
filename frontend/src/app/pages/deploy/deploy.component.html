@@ -24,12 +24,12 @@
     </fleet-map>
 
     <div class="deploy__platform-buttons">
-      <app-button [type]="'danger'">ПОКИНУТЬ БОЙ</app-button>
+      <app-button [type]="'danger'">CANCEL BATTLE</app-button>
       <app-button 
         [type]="'primary'"
         [disabled]="gameService.player.ready"
         (click)="ready()"
-        >ГОТОВ К БОЮ
+        >READY FOR BATTLE
       </app-button>
     </div>
     

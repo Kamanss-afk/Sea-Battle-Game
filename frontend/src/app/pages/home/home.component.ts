@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     ]),
   });
 
-  public controllers: [string, string] = ['НАЧАТЬ', 'ПРИСОЕДИНИТЬСЯ'];
+  public controllers: [string, string] = ['START', 'JOIN'];
 
   constructor(
     private router: Router,
@@ -63,11 +63,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     this.startGameError = this.gameService.onStartGameError.subscribe(({ message }) => {
-      this.toastr.error(message, 'Вы не можете начать новую игру:');
+      this.toastr.error(message, 'You cannot start a new game:');
     });
 
     this.joinGameError = this.gameService.onJoinGameError.subscribe(({ message }) => {
-      this.toastr.error(message, 'Вы не можете присоединиться к игре:');
+      this.toastr.error(message, 'You cannot join:');
     });
   }
 

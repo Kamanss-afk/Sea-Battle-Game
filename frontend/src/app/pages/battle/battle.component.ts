@@ -59,7 +59,7 @@ export class BattleComponent implements OnInit, OnDestroy {
     });
 
     this.makeShotError = this.gameService.onMakeShotError.subscribe(({ message }) => {
-      this.toastr.error(message, 'Ошибка при выстреле! Повторите попытку');
+      this.toastr.error(message, 'Shot error! Try again');
     });
 
     this.turnChange = this.gameService.onTurnChange.subscribe(({ turn }) => {
